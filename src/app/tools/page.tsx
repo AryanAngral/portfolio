@@ -5,6 +5,9 @@ import PasswordMeter from "@/components/tools/PasswordMeter";
 import Hasher from "@/components/tools/Hasher";
 import JwtDecoder from "@/components/tools/JwtDecoder";
 import HeaderScan from "@/components/tools/HeaderScan";
+import RegexTester from "@/components/tools/RegexTester";
+import BaseConverter from "@/components/tools/BaseConverter";
+import UuidGenerator from "@/components/tools/UuidGenerator";
 
 export const metadata: Metadata = {
   title: "Security tools — Aryan Angral",
@@ -40,6 +43,9 @@ export default function ToolsPage() {
         <Hasher />
         <JwtDecoder />
         <HeaderScan />
+        <RegexTester />
+        <BaseConverter />
+        <UuidGenerator />
       </div>
     </main>
   );
