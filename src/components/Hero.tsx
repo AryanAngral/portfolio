@@ -9,15 +9,6 @@ const ROLES = ["Software Engineer", "Cloud & DevOps Builder", "Full-Stack Develo
 export default function Hero() {
   return (
     <section id="top" className="relative flex min-h-screen items-center overflow-hidden px-6">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(600px circle at 20% 20%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 60%), radial-gradient(500px circle at 80% 70%, color-mix(in srgb, var(--accent-2) 16%, transparent), transparent 60%)",
-        }}
-      />
-
       <div className="mx-auto grid max-w-5xl gap-10 py-32">
         <motion.a
           href="#contact"

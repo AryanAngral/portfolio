@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 import { profile } from "@/lib/data";
 
 const links = [
   { href: "#about", label: "About" },
+  { href: "#journey", label: "Journey" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#certifications", label: "Certifications" },
@@ -16,6 +18,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 180, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
     function onScroll() {
@@ -48,20 +52,31 @@ export default function Navbar() {
         scrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : ""
       }`}
     >
+      <motion.div
+        aria-hidden
+        style={{ scaleX: progress }}
+        className="absolute left-0 right-0 top-0 h-[2px] origin-left bg-gradient-to-r from-accent to-accent-2"
+      />
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <a href="#top" className="font-mono text-sm font-semibold tracking-tight">
-          {profile.name.split(" ")[0]}<span className="text-accent">.</span>
+        <a href="#top" className="group flex items-center gap-2.5">
+          <span className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-to-br from-accent to-accent-2 text-sm font-bold text-accent-contrast shadow-md shadow-accent/25 transition-transform group-hover:scale-110 group-hover:rotate-3">
+            A
+          </span>
+          <span className="font-mono text-sm font-semibold tracking-tight">
+            {profile.name.split(" ")[0]}
+            <span className="text-gradient">.</span>
+          </span>
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-7 md:flex">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className={`text-sm transition-colors ${
+              className={`relative text-sm transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:rounded-full after:bg-gradient-to-r after:from-accent after:to-accent-2 after:transition-all after:duration-300 hover:after:w-full ${
                 active === link.href.slice(1)
-                  ? "text-accent"
-                  : "text-muted hover:text-foreground"
+                  ? "text-foreground after:w-full"
+                  : "text-muted hover:text-foreground after:w-0"
               }`}
             >
               {link.label}
