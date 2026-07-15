@@ -16,6 +16,8 @@ import Achievements from "@/components/Achievements";
 import Screensaver from "@/components/Screensaver";
 import KonamiListener from "@/components/KonamiListener";
 import CheatSheet from "@/components/CheatSheet";
+import SectionNav from "@/components/SectionNav";
+import Confetti from "@/components/Confetti";
 import { education, profile, siteUrl } from "@/lib/data";
 
 const geistSans = Geist({
@@ -113,6 +115,8 @@ export default function RootLayout({
         <Screensaver />
         <KonamiListener />
         <CheatSheet />
+        <SectionNav />
+        <Confetti />
         <CustomCursor />
         <ServiceWorker />
         {process.env.VERCEL === "1" && <Analytics />}

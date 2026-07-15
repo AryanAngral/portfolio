@@ -1,9 +1,9 @@
 {
-  "files": 83,
-  "lines": 8126,
-  "components": 76,
+  "files": 86,
+  "lines": 8389,
+  "components": 79,
   "games": 18,
-  "commits": 22,
+  "commits": 23,
   "lastCommit": "2026-07-16",
   "deps": 8,
   "devDeps": 9,

@@ -30,6 +30,7 @@ export default function Achievements() {
     const others = ACHIEVEMENTS.filter((a) => a.id !== "completionist").map((a) => a.id);
     if (others.every((o) => next.includes(o)) && !next.includes("completionist")) {
       next.push("completionist");
+      window.dispatchEvent(new Event("confetti"));
     }
 
     unlockedRef.current = next;

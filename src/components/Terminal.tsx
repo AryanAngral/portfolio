@@ -8,6 +8,13 @@ type Line = { text: string; kind: "input" | "output" };
 
 const PROMPT = "aryan@portfolio:~$";
 
+const BANNER = String.raw`
+   _   ___ _   _   _ _  _
+  /_\ | _ \ | | | /_\ \| |
+ / _ \|   / |_| |/ _ \  |
+/_/ \_\_|_\\___//_/ \_\_|   portfolio v2.6
+`;
+
 function runCommand(raw: string): { output: string[]; action?: () => void } {
   const cmd = raw.trim().toLowerCase();
   switch (cmd) {
@@ -154,6 +161,7 @@ function runCommand(raw: string): { output: string[]; action?: () => void } {
 export default function Terminal() {
   const [open, setOpen] = useState(false);
   const [lines, setLines] = useState<Line[]>([
+    { text: BANNER, kind: "output" },
     { text: "welcome — type 'help' to get started.", kind: "output" },
   ]);
   const [value, setValue] = useState("");

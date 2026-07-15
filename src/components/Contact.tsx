@@ -6,6 +6,7 @@ import { FiGithub, FiLinkedin, FiMail, FiSend } from "react-icons/fi";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import ContactCard from "./ContactCard";
+import OfficeHours from "./OfficeHours";
 import { profile } from "@/lib/data";
 
 type Status = "idle" | "sending" | "success" | "error";
@@ -45,6 +46,7 @@ export default function Contact() {
       });
       setStatus("success");
       formRef.current.reset();
+      window.dispatchEvent(new Event("confetti"));
     } catch (err) {
       const info =
         err instanceof Error
@@ -91,6 +93,10 @@ export default function Contact() {
             >
               <FiLinkedin size={16} /> LinkedIn
             </a>
+          </div>
+
+          <div className="mt-6">
+            <OfficeHours />
           </div>
         </Reveal>
 
