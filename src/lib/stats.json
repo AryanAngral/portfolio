@@ -1,11 +1,11 @@
 {
-  "files": 74,
-  "lines": 7390,
-  "components": 67,
+  "files": 78,
+  "lines": 7695,
+  "components": 71,
   "games": 18,
-  "commits": 20,
+  "commits": 21,
   "lastCommit": "2026-07-16",
-  "deps": 7,
-  "devDeps": 8,
+  "deps": 8,
+  "devDeps": 9,
   "generatedAt": "2026-07-15"
 }

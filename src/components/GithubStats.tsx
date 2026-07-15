@@ -1,6 +1,7 @@
 import { FiGithub } from "react-icons/fi";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
+import CommitHeatmap from "./CommitHeatmap";
 import { profile } from "@/lib/data";
 import github from "@/lib/github.json";
 
@@ -37,6 +38,10 @@ export default function GithubStats() {
       </div>
 
       <Reveal delay={0.1} className="mt-6">
+        <CommitHeatmap />
+      </Reveal>
+
+      <Reveal delay={0.15} className="mt-6">
         <a
           href={profile.github}
           target="_blank"

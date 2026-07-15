@@ -15,6 +15,7 @@ import ServiceWorker from "@/components/ServiceWorker";
 import Achievements from "@/components/Achievements";
 import Screensaver from "@/components/Screensaver";
 import KonamiListener from "@/components/KonamiListener";
+import CheatSheet from "@/components/CheatSheet";
 import { education, profile, siteUrl } from "@/lib/data";
 
 const geistSans = Geist({
@@ -111,6 +112,7 @@ export default function RootLayout({
         <Achievements />
         <Screensaver />
         <KonamiListener />
+        <CheatSheet />
         <CustomCursor />
         <ServiceWorker />
         {process.env.VERCEL === "1" && <Analytics />}

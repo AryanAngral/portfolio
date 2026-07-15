@@ -5,6 +5,7 @@ import emailjs from "@emailjs/browser";
 import { FiGithub, FiLinkedin, FiMail, FiSend } from "react-icons/fi";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
+import ContactCard from "./ContactCard";
 import { profile } from "@/lib/data";
 
 type Status = "idle" | "sending" | "success" | "error";
@@ -169,6 +170,10 @@ export default function Contact() {
           </form>
         </Reveal>
       </div>
+
+      <Reveal delay={0.15}>
+        <ContactCard />
+      </Reveal>
     </section>
   );
 }

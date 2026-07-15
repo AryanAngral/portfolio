@@ -1,4 +1,5 @@
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import UptimeTicker from "./UptimeTicker";
 import { profile } from "@/lib/data";
 
 export default function Footer() {
@@ -45,7 +46,7 @@ export default function Footer() {
             <FiMail size={16} />
           </a>
         </div>
-        <p>Built with Next.js &amp; Tailwind · no trackers</p>
+        <UptimeTicker />
       </div>
     </footer>
   );
