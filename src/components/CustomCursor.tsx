@@ -80,11 +80,13 @@ export default function CustomCursor() {
     <div id="custom-cursor" aria-hidden className="pointer-events-none fixed inset-0 z-[999]">
       <div
         ref={ringRef}
-        className="absolute left-0 top-0 h-8 w-8 rounded-full border-2 border-white mix-blend-difference will-change-transform"
+        className="absolute left-0 top-0 h-8 w-8 rounded-full border-2 border-accent will-change-transform"
+        style={{ boxShadow: "0 0 0 1px rgba(255,255,255,0.5), 0 0 4px rgba(0,0,0,0.35)" }}
       />
       <div
         ref={dotRef}
-        className="absolute left-0 top-0 h-2 w-2 rounded-full bg-white mix-blend-difference will-change-transform"
+        className="absolute left-0 top-0 h-2.5 w-2.5 rounded-full bg-accent will-change-transform"
+        style={{ boxShadow: "0 0 0 1.5px rgba(255,255,255,0.85), 0 0 4px rgba(0,0,0,0.4)" }}
       />
     </div>
   );
