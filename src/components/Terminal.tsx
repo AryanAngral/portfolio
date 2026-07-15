@@ -24,6 +24,7 @@ function runCommand(raw: string): { output: string[]; action?: () => void } {
           "  arcade      — play 17 retro games",
           "  algorithms  — watch sorts & pathfinding run",
           "  stats       — engineering stats for this site",
+          "  tools       — client-side security tools",
           "  ctf         — the flag hunt (6 hidden flags)",
           "  matrix      — enter the matrix (esc to exit)",
           "  contact     — jump to the contact form",
@@ -81,6 +82,13 @@ function runCommand(raw: string): { output: string[]; action?: () => void } {
         output: ["opening the engineering dashboard…"],
         action: () => {
           window.location.href = "/stats";
+        },
+      };
+    case "tools":
+      return {
+        output: ["opening the security tools…"],
+        action: () => {
+          window.location.href = "/tools";
         },
       };
     case "ctf":

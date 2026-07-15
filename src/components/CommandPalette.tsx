@@ -81,6 +81,15 @@ export default function CommandPalette() {
         },
       },
       {
+        id: "tools",
+        label: "Security tools (hasher, JWT, headers)",
+        hint: "Page",
+        icon: <FiFolder size={15} />,
+        run: () => {
+          window.location.href = "/tools";
+        },
+      },
+      {
         id: "stats",
         label: "Site engineering stats",
         hint: "Page",

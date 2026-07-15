@@ -9,6 +9,7 @@ export default function Footer() {
           <a href="/arcade" className="transition-colors hover:text-accent">🕹️ arcade</a>
           <a href="/algorithms" className="transition-colors hover:text-accent">📊 algorithms</a>
           <a href="/ctf" className="transition-colors hover:text-accent">🚩 ctf</a>
+          <a href="/tools" className="transition-colors hover:text-accent">🔐 tools</a>
           <a href="/resume" className="transition-colors hover:text-accent">📄 resume</a>
           <a href="/stats" className="transition-colors hover:text-accent">📈 stats</a>
         </nav>
