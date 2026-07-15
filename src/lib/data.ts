@@ -9,7 +9,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/aryan-angral-44a953167",
   resumeUrl: "/Aryan_Angral_Resume.pdf",
   summary:
-    "Final-year Computer Science student and Software Intern building production cloud infrastructure and full-stack platforms — from Terraform-provisioned GCP environments to AI-powered web apps.",
+    "Computer Science graduate and Software Engineer building production cloud infrastructure and full-stack platforms — from Terraform-provisioned GCP environments to AI-powered web apps.",
 };
 
 export const education = {
@@ -17,7 +17,7 @@ export const education = {
   location: "Jammu, India",
   degree: "B.Tech. in Computer Science and Engineering",
   cgpa: "8.8 / 10.0",
-  graduation: "Expected July 2026",
+  graduation: "Graduated July 2026",
 };
 
 export type SkillGroup = {
