@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Journey from "@/components/Journey";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
+import GithubStats from "@/components/GithubStats";
 import Certifications from "@/components/Certifications";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -26,6 +27,7 @@ export default function Home() {
         <Journey />
         <Experience />
         <Projects />
+        <GithubStats />
         <Certifications />
         <Contact />
       </main>

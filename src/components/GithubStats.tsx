@@ -1,0 +1,45 @@
+import { FiGithub } from "react-icons/fi";
+import Reveal from "./Reveal";
+import SectionHeading from "./SectionHeading";
+import { profile } from "@/lib/data";
+import github from "@/lib/github.json";
+
+const yearsActive = new Date().getFullYear() - github.memberSince;
+
+const TILES = [
+  { value: github.repos, label: "Public repositories", hint: "on GitHub" },
+  { value: github.languages.length, label: "Languages", hint: github.languages.join(" · ") },
+  { value: github.topLanguage, label: "Most-used language", hint: "across projects" },
+  { value: `${yearsActive}+`, label: "Years on GitHub", hint: `since ${github.memberSince}` },
+];
+
+export default function GithubStats() {
+  return (
+    <section id="github" className="mx-auto max-w-5xl px-6 py-24">
+      <SectionHeading index="05" eyebrow="GitHub" title="Code, by the numbers" />
+
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {TILES.map((tile, i) => (
+          <Reveal key={tile.label} delay={i * 0.06}>
+            <div className="h-full rounded-2xl border border-border bg-surface p-5">
+              <p className="text-gradient text-3xl font-bold">{tile.value}</p>
+              <p className="mt-2 text-xs font-medium">{tile.label}</p>
+              <p className="mt-0.5 font-mono text-[10px] text-muted">{tile.hint}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      <Reveal delay={0.1} className="mt-6">
+        <a
+          href={profile.github}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm transition-colors hover:border-accent hover:text-accent"
+        >
+          <FiGithub size={16} /> View all repositories
+        </a>
+      </Reveal>
+    </section>
+  );
+}
