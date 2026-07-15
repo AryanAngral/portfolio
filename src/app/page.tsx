@@ -8,6 +8,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import CommandPalette from "@/components/CommandPalette";
+import CustomCursor from "@/components/CustomCursor";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <Footer />
       <BackToTop />
       <CommandPalette />
+      <CustomCursor />
     </>
   );
 }

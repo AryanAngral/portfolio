@@ -12,7 +12,7 @@ const stats = [
 export default function About() {
   return (
     <section id="about" className="mx-auto max-w-5xl px-6 py-24">
-      <SectionHeading eyebrow="About" title="Who I am" />
+      <SectionHeading index="01" eyebrow="About" title="Who I am" />
 
       <Reveal className="mb-14">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">

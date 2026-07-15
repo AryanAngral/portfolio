@@ -24,13 +24,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex w-fit items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs text-muted transition-colors hover:border-accent hover:text-accent"
+          className="flex w-fit items-center gap-2.5 rounded-full border border-border bg-surface px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:border-accent hover:text-accent"
+          aria-label={profile.availability}
         >
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
           </span>
-          {profile.availability}
+          status: open_to_work
         </motion.a>
 
         <motion.p

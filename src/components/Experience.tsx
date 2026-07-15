@@ -5,7 +5,7 @@ import { experience } from "@/lib/data";
 export default function Experience() {
   return (
     <section id="experience" className="mx-auto max-w-5xl px-6 py-24">
-      <SectionHeading eyebrow="Experience" title="Where I've worked" />
+      <SectionHeading index="02" eyebrow="Experience" title="Where I&apos;ve worked" />
 
       <div className="relative ml-3 border-l border-border pl-8">
         {experience.map((item, i) => (
