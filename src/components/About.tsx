@@ -6,7 +6,7 @@ const stats = [
   { value: "8.8", label: "CGPA in Computer Science" },
   { value: "200+", label: "Students reached via workshops" },
   { value: "30%", label: "Latency cut in optimized pipelines" },
-  { value: "4", label: "Certifications & distinctions" },
+  { value: "8", label: "Certifications & distinctions" },
 ];
 
 export default function About() {

@@ -218,6 +218,10 @@ export const courseworkRepos: CourseworkRepo[] = [
 export type Certification = {
   title: string;
   issuer: string;
+  year?: string;
+  href?: string;
+  credentialId?: string;
+  courses?: { label: string; href: string }[];
 };
 
 export const certifications: Certification[] = [
@@ -227,11 +231,45 @@ export const certifications: Certification[] = [
   },
   {
     title: "Google Cybersecurity Professional Certificate",
-    issuer: "Google",
+    issuer: "Google · Coursera",
+    year: "2024 – 2025",
+    courses: [
+      { label: "Foundations of Cybersecurity", href: "https://coursera.org/verify/40Z0EXGY2ERX" },
+      { label: "Manage Security Risks", href: "https://coursera.org/verify/WHR9BM8LK8OZ" },
+      { label: "Linux and SQL", href: "https://coursera.org/verify/ERRD7JWYEKY5" },
+      { label: "Network Security", href: "https://coursera.org/verify/ID4M8VZH6PHT" },
+      { label: "Assets, Threats & Vulnerabilities", href: "https://coursera.org/verify/Z8X06AR208Q0" },
+      { label: "Detection and Response", href: "https://coursera.org/verify/SW1YX7XE0NLI" },
+    ],
   },
   {
-    title: "Palo Alto Networks Cybersecurity Specialization",
-    issuer: "Palo Alto Networks",
+    title: "Palo Alto Networks Cybersecurity Professional Certificate",
+    issuer: "Palo Alto Networks · Coursera",
+    year: "2024",
+    href: "https://coursera.org/verify/LGPHQ8QZJN8I",
+  },
+  {
+    title: "Introduction to Cyber Security Specialization",
+    issuer: "New York University · Coursera",
+    year: "2024",
+    href: "https://coursera.org/verify/TMC96CLAEKS7",
+  },
+  {
+    title: "Cyber Security and Privacy (12-week course)",
+    issuer: "NPTEL",
+    year: "2024",
+    credentialId: "NPTEL24CS121S954400149",
+  },
+  {
+    title: "Introduction to Data Science",
+    issuer: "Infosys Springboard",
+    year: "2025",
+  },
+  {
+    title: "Python",
+    issuer: "GUVI",
+    year: "2024",
+    href: "https://www.guvi.in/certificate?id=872MS84092736zrv14",
   },
   {
     title: "Certified Specialist in AI and Secure Computing",
