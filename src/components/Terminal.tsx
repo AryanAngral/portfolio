@@ -21,6 +21,7 @@ function runCommand(raw: string): { output: string[]; action?: () => void } {
           "  projects    — things I've built",
           "  certs       — certifications",
           "  resume      — download my resume",
+          "  arcade      — play 15 retro games",
           "  contact     — jump to the contact form",
           "  email       — copy nothing, just read it",
           "  github      — open GitHub",
@@ -56,6 +57,13 @@ function runCommand(raw: string): { output: string[]; action?: () => void } {
         },
       };
     }
+    case "arcade":
+      return {
+        output: ["loading the arcade…"],
+        action: () => {
+          window.location.href = "/arcade";
+        },
+      };
     case "contact":
       return {
         output: ["taking you to the contact form…"],

@@ -54,6 +54,15 @@ export default function CommandPalette() {
         run: () => window.dispatchEvent(new Event("terminal:open")),
       },
       {
+        id: "arcade",
+        label: "Play the arcade (15 retro games)",
+        hint: "Page",
+        icon: <FiFolder size={15} />,
+        run: () => {
+          window.location.href = "/arcade";
+        },
+      },
+      {
         id: "resume-page",
         label: "View HTML resume",
         hint: "Page",

@@ -17,6 +17,7 @@ Personal portfolio built with Next.js 16 (App Router), TypeScript, Tailwind CSS 
 
 - Animated hero with rotating roles and `STATUS: OPEN_TO_WORK` badge
 - Command palette (`Ctrl+K`) and a hidden interactive terminal (`Ctrl+\``)
+- `/arcade` — 15 retro mini-games (Snake, Pong, Blocks, Invaders, 2048, Minesweeper…) built from scratch, zero external APIs
 - Custom cursor with trailing ring (desktop only, reduced-motion aware)
 - Dark/light theme with no flash-of-wrong-theme
 - Journey timeline, spotlight project cards, scrollspy navigation

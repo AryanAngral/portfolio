@@ -35,7 +35,12 @@ export default function Footer() {
             <FiMail size={16} />
           </a>
         </div>
-        <p>Built with Next.js &amp; Tailwind CSS.</p>
+        <p>
+          Built with Next.js &amp; Tailwind ·{" "}
+          <a href="/arcade" className="transition-colors hover:text-accent">
+            🕹️ Arcade
+          </a>
+        </p>
       </div>
     </footer>
   );

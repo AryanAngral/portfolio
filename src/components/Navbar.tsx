@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion, useScroll, useSpring } from "framer-motion";
+import { IoGameControllerOutline } from "react-icons/io5";
 import ThemeToggle from "./ThemeToggle";
 import { profile } from "@/lib/data";
 
@@ -85,6 +87,14 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
+          <Link
+            href="/arcade"
+            aria-label="Open the arcade"
+            title="Arcade — 15 retro games"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface text-muted transition-colors hover:border-accent hover:text-accent"
+          >
+            <IoGameControllerOutline size={17} />
+          </Link>
           <button
             onClick={() => window.dispatchEvent(new Event("cmdk:open"))}
             aria-label="Open command palette"
