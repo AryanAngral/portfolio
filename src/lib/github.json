@@ -1,5 +1,7 @@
 {
   "repos": 20,
+  "linesOfCode": 24000,
+  "commits": 185,
   "languages": ["C++", "TypeScript", "JavaScript", "Python", "HTML", "Jupyter"],
   "topLanguage": "C++",
   "memberSince": 2022,

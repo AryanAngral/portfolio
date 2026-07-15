@@ -6,8 +6,14 @@ import github from "@/lib/github.json";
 
 const yearsActive = new Date().getFullYear() - github.memberSince;
 
+function compact(n: number): string {
+  return n >= 1000 ? `${Math.floor(n / 1000)}K+` : String(n);
+}
+
 const TILES = [
   { value: github.repos, label: "Public repositories", hint: "on GitHub" },
+  { value: compact(github.linesOfCode), label: "Lines of code", hint: "across public repos" },
+  { value: `${github.commits}+`, label: "Commits", hint: "pushed to GitHub" },
   { value: github.languages.length, label: "Languages", hint: github.languages.join(" · ") },
   { value: github.topLanguage, label: "Most-used language", hint: "across projects" },
   { value: `${yearsActive}+`, label: "Years on GitHub", hint: `since ${github.memberSince}` },
@@ -18,7 +24,7 @@ export default function GithubStats() {
     <section id="github" className="mx-auto max-w-5xl px-6 py-24">
       <SectionHeading index="05" eyebrow="GitHub" title="Code, by the numbers" />
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
         {TILES.map((tile, i) => (
           <Reveal key={tile.label} delay={i * 0.06}>
             <div className="h-full rounded-2xl border border-border bg-surface p-5">
