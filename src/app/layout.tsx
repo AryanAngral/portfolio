@@ -8,6 +8,10 @@ import BackgroundFX from "@/components/BackgroundFX";
 import CommandPalette from "@/components/CommandPalette";
 import CustomCursor from "@/components/CustomCursor";
 import Terminal from "@/components/Terminal";
+import BootScreen from "@/components/BootScreen";
+import AryanBot from "@/components/AryanBot";
+import MatrixRain from "@/components/MatrixRain";
+import ServiceWorker from "@/components/ServiceWorker";
 import { education, profile, siteUrl } from "@/lib/data";
 
 const geistSans = Geist({
@@ -88,6 +92,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <BootScreen />
         <BackgroundFX />
         <a
           href="#main-content"
@@ -98,7 +103,10 @@ export default function RootLayout({
         <MotionProvider>{children}</MotionProvider>
         <CommandPalette />
         <Terminal />
+        <AryanBot />
+        <MatrixRain />
         <CustomCursor />
+        <ServiceWorker />
         {process.env.VERCEL === "1" && <Analytics />}
       </body>
     </html>

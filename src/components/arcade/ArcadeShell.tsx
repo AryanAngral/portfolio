@@ -28,6 +28,8 @@ export const GAMES: GameMeta[] = [
   { id: "simon", name: "Simon", icon: "🎨", mode: "vs cpu", controls: "repeat the pattern" },
   { id: "rps", name: "Rock Paper Scissors", icon: "✂️", mode: "vs cpu", controls: "pick a move" },
   { id: "hangman", name: "Hangman", icon: "🪢", mode: "solo", controls: "guess letters" },
+  { id: "typing", name: "Typing Test", icon: "⌨️", mode: "solo", controls: "type · space advances" },
+  { id: "beats", name: "Beats", icon: "🎹", mode: "solo", controls: "click cells" },
 ];
 
 const COMPONENTS: Record<string, ComponentType> = {
@@ -46,6 +48,8 @@ const COMPONENTS: Record<string, ComponentType> = {
   simon: dynamic(() => import("./games/Simon"), { ssr: false }),
   rps: dynamic(() => import("./games/RockPaperScissors"), { ssr: false }),
   hangman: dynamic(() => import("./games/Hangman"), { ssr: false }),
+  typing: dynamic(() => import("./games/TypingTest"), { ssr: false }),
+  beats: dynamic(() => import("./games/Beats"), { ssr: false }),
 };
 
 export default function ArcadeShell() {

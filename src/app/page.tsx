@@ -12,6 +12,13 @@ import BackToTop from "@/components/BackToTop";
 export default function Home() {
   return (
     <>
+      {/* ctf flag #1 lives in the served HTML */}
+      <div
+        hidden
+        dangerouslySetInnerHTML={{
+          __html: "<!-- nice instinct. FLAG{view_source_is_a_skill} -->",
+        }}
+      />
       <Navbar />
       <main id="main-content" className="flex-1">
         <Hero />

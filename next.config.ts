@@ -36,6 +36,10 @@ const securityHeaders = [
     value: "max-age=63072000; includeSubDomains; preload",
   },
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+  // CORP same-origin, not COEP require-corp: keeps cross-origin leaks out
+  // without breaking the self-hosted, no-cross-origin asset model.
+  { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
+  { key: "Origin-Agent-Cluster", value: "?1" },
   { key: "X-Permitted-Cross-Domain-Policies", value: "none" },
   { key: "X-DNS-Prefetch-Control", value: "off" },
 ];

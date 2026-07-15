@@ -4,6 +4,13 @@ import { profile } from "@/lib/data";
 export default function NotFound() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
+      {/* ctf flag #4 — lost pages have source too */}
+      <div
+        hidden
+        dangerouslySetInnerHTML={{
+          __html: "<!-- being lost pays off: FLAG{lost_pages_hold_secrets} -->",
+        }}
+      />
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
         error / page_not_found
       </p>

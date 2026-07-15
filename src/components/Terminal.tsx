@@ -21,7 +21,11 @@ function runCommand(raw: string): { output: string[]; action?: () => void } {
           "  projects    — things I've built",
           "  certs       — certifications",
           "  resume      — download my resume",
-          "  arcade      — play 15 retro games",
+          "  arcade      — play 17 retro games",
+          "  algorithms  — watch sorts & pathfinding run",
+          "  stats       — engineering stats for this site",
+          "  ctf         — the flag hunt (6 hidden flags)",
+          "  matrix      — enter the matrix (esc to exit)",
           "  contact     — jump to the contact form",
           "  email       — copy nothing, just read it",
           "  github      — open GitHub",
@@ -64,6 +68,34 @@ function runCommand(raw: string): { output: string[]; action?: () => void } {
           window.location.href = "/arcade";
         },
       };
+    case "algorithms":
+    case "algo":
+      return {
+        output: ["opening the algorithm visualizers…"],
+        action: () => {
+          window.location.href = "/algorithms";
+        },
+      };
+    case "stats":
+      return {
+        output: ["opening the engineering dashboard…"],
+        action: () => {
+          window.location.href = "/stats";
+        },
+      };
+    case "ctf":
+    case "hack":
+      return {
+        output: ["6 flags hidden across this site. good luck.", "opening /ctf…"],
+        action: () => {
+          window.location.href = "/ctf";
+        },
+      };
+    case "matrix":
+      return {
+        output: ["wake up, Neo…"],
+        action: () => window.dispatchEvent(new Event("matrix:toggle")),
+      };
     case "contact":
       return {
         output: ["taking you to the contact form…"],
@@ -94,7 +126,16 @@ function runCommand(raw: string): { output: string[]; action?: () => void } {
     case "sudo su":
       return { output: ["nice try."] };
     case "ls":
-      return { output: ["about  journey  experience  projects  certifications  contact"] };
+      return { output: ["about  journey  experience  projects  certifications  contact  .env"] };
+    case "cat .env":
+    case "env":
+      return {
+        output: [
+          "NODE_ENV=production",
+          "COFFEE_LEVEL=critical",
+          "SECRET=RkxBR3t0ZXJtaW5hbF9hcmNoYWVvbG9naXN0fQ==",
+        ],
+      };
     case "":
       return { output: [] };
     default:

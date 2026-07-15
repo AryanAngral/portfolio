@@ -63,6 +63,40 @@ export default function CommandPalette() {
         },
       },
       {
+        id: "algorithms",
+        label: "Algorithm visualizers",
+        hint: "Page",
+        icon: <FiFolder size={15} />,
+        run: () => {
+          window.location.href = "/algorithms";
+        },
+      },
+      {
+        id: "ctf",
+        label: "Play the CTF flag hunt",
+        hint: "Page",
+        icon: <FiFolder size={15} />,
+        run: () => {
+          window.location.href = "/ctf";
+        },
+      },
+      {
+        id: "stats",
+        label: "Site engineering stats",
+        hint: "Page",
+        icon: <FiFolder size={15} />,
+        run: () => {
+          window.location.href = "/stats";
+        },
+      },
+      {
+        id: "matrix",
+        label: "Enter the matrix",
+        hint: "Easter egg",
+        icon: <FiFolder size={15} />,
+        run: () => window.dispatchEvent(new Event("matrix:toggle")),
+      },
+      {
         id: "resume-page",
         label: "View HTML resume",
         hint: "Page",

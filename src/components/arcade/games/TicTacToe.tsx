@@ -85,7 +85,11 @@ export default function TicTacToe() {
         {result && (
           <Overlay
             title={result === "draw" ? "Draw" : result === "X" ? "You win!" : "CPU wins"}
-            subtitle="the computer plays perfect minimax — a draw is a win"
+            subtitle={
+              tally.draws >= 3
+                ? "three perfect games. FLAG{you_cannot_beat_minimax}"
+                : "the computer plays perfect minimax — a draw is a win"
+            }
             actionLabel="Play again"
             onAction={() => setBoard(Array(9).fill(null))}
           />

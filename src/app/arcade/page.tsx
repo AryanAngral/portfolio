@@ -6,7 +6,7 @@ import ArcadeShell from "@/components/arcade/ArcadeShell";
 export const metadata: Metadata = {
   title: "Arcade — Aryan Angral",
   description:
-    "15 retro mini-games built from scratch — no APIs, no trackers, everything runs in your browser.",
+    "17 retro mini-games built from scratch — no APIs, no trackers, everything runs in your browser.",
 };
 
 export default function ArcadePage() {
@@ -28,7 +28,7 @@ export default function ArcadePage() {
         The <span className="text-gradient">Arcade</span>
       </h1>
       <p className="mt-2 max-w-xl text-muted">
-        15 retro games written from scratch for this site — canvas, React, and nothing else.
+        17 retro games written from scratch for this site — canvas, React, and nothing else.
         High scores live in your browser. Best played on a keyboard.
       </p>
 

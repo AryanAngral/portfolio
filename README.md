@@ -17,15 +17,18 @@ Personal portfolio built with Next.js 16 (App Router), TypeScript, Tailwind CSS 
 
 - Animated hero with rotating roles and `STATUS: OPEN_TO_WORK` badge
 - Command palette (`Ctrl+K`) and a hidden interactive terminal (`Ctrl+\``)
-- `/arcade` — 15 retro mini-games (Snake, Pong, Blocks, Invaders, 2048, Minesweeper…) built from scratch, zero external APIs
-- Custom cursor with trailing ring (desktop only, reduced-motion aware)
-- Dark/light theme with no flash-of-wrong-theme
-- Journey timeline, spotlight project cards, scrollspy navigation
+- `/arcade` — 17 retro mini-games (Snake, Pong, Blocks, Invaders, 2048, Minesweeper, typing test, beat sequencer…) built from scratch, zero external APIs
+- `/algorithms` — live sorting races and A* vs Dijkstra pathfinding visualizers
+- `/ctf` — a capture-the-flag hunt with 6 flags hidden across the site (hash-verified client-side)
+- `/stats` — build-time engineering dashboard (LOC, commits, bundle facts) generated on every deploy
+- AryanBot — a rule-based (no-AI, no-API) chat guide to the portfolio
+- Theme lab (live accent recoloring), retro boot sequence, and a `matrix` rain easter egg
+- Custom cursor (mix-blend, visible on any background), dark/light theme, journey timeline, spotlight cards, scrollspy
 - Contact form that emails directly via EmailJS (no backend)
 - `/resume` — HTML resume rendered from the same data as the site, print-ready
-- Installable PWA with app icons and custom 404 page
+- Installable PWA + offline service worker (play the arcade with no connection) and custom 404 page
 - SEO: sitemap, robots, JSON-LD structured data, Open Graph image generated at build time
-- Hardened security headers (CSP, HSTS, COOP, frame-ancestors), security.txt, and contact-form spam protection
+- Hardened security headers (CSP, HSTS, COOP, CORP, Origin-Agent-Cluster, frame-ancestors), security.txt, contact-form spam protection
 - Accessible: skip link, reduced-motion support, WCAG-checked contrast
 
 ## Getting started
