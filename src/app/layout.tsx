@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import ThemeScript from "@/components/ThemeScript";
+import MotionProvider from "@/components/MotionProvider";
 import { education, profile, siteUrl } from "@/lib/data";
 
 const geistSans = Geist({
@@ -88,7 +90,8 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        {children}
+        <MotionProvider>{children}</MotionProvider>
+        <Analytics />
       </body>
     </html>
   );

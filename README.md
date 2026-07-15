@@ -1,6 +1,28 @@
 # Aryan Angral — Portfolio
 
-Personal portfolio built with Next.js 16 (App Router), TypeScript, Tailwind CSS v4, and Framer Motion. Includes dark mode, animated sections, and a contact form that emails you directly — no backend server required.
+[![Live Site](https://img.shields.io/badge/live-aryanangral.vercel.app-6d28d9)](https://aryanangral.vercel.app)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06b6d4)](https://tailwindcss.com)
+[![Deployed on Vercel](https://img.shields.io/badge/deployed_on-Vercel-black)](https://vercel.com)
+
+[![Preview](https://aryanangral.vercel.app/opengraph-image)](https://aryanangral.vercel.app)
+
+Personal portfolio built with Next.js 16 (App Router), TypeScript, Tailwind CSS v4, and Framer Motion.
+
+**Live at [aryanangral.vercel.app](https://aryanangral.vercel.app)**
+
+## Features
+
+- Animated hero with rotating roles and availability badge
+- Command palette (`Ctrl+K`) for keyboard-driven navigation
+- Dark/light theme with no flash-of-wrong-theme
+- Spotlight hover effect on project cards
+- Scrollspy navigation and scroll-reveal animations
+- Contact form that emails directly via EmailJS (no backend)
+- Downloadable resume PDF
+- SEO: sitemap, robots, JSON-LD structured data, Open Graph image generated at build time
+- Hardened security headers (CSP, HSTS, frame-ancestors) and contact-form spam protection
+- Accessible: skip link, reduced-motion support, semantic landmarks
 
 ## Getting started
 

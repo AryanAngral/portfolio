@@ -19,11 +19,25 @@ export default function Hero() {
       />
 
       <div className="mx-auto grid max-w-5xl gap-10 py-32">
-        <motion.p
+        <motion.a
+          href="#contact"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="font-mono text-sm text-accent"
+          className="flex w-fit items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs text-muted transition-colors hover:border-accent hover:text-accent"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+          </span>
+          {profile.availability}
+        </motion.a>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+          className="-mt-4 font-mono text-sm text-accent"
         >
           Hi, I&apos;m
         </motion.p>

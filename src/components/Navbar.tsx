@@ -70,6 +70,14 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
+          <button
+            onClick={() => window.dispatchEvent(new Event("cmdk:open"))}
+            aria-label="Open command palette"
+            className="hidden h-9 items-center gap-2 rounded-full border border-border bg-surface px-3 text-xs text-muted transition-colors hover:border-accent hover:text-accent md:flex cursor-pointer"
+          >
+            <kbd className="font-mono">Ctrl</kbd>
+            <kbd className="font-mono">K</kbd>
+          </button>
           <ThemeToggle />
           <button
             onClick={() => setOpen((o) => !o)}

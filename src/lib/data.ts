@@ -9,6 +9,7 @@ export const profile = {
   github: "https://github.com/AryanAngral",
   linkedin: "https://www.linkedin.com/in/aryan-angral-44a953167",
   resumeUrl: "/Aryan_Angral_Resume.pdf",
+  availability: "Open to full-time opportunities",
   summary:
     "Computer Science graduate and Software Engineer building production cloud infrastructure and full-stack platforms — from Terraform-provisioned GCP environments to AI-powered web apps.",
 };
@@ -130,6 +131,7 @@ export type Project = {
   tags: string[];
   points: string[];
   link?: string;
+  repo?: string;
 };
 
 export const projects: Project[] = [
@@ -149,6 +151,7 @@ export const projects: Project[] = [
     description:
       "Full-stack finance tracker with a conversational assistant and predictive expense forecasting.",
     tags: ["MERN Stack", "REST APIs", "Gemini API", "Python"],
+    repo: "https://github.com/AryanAngral/spendr_final",
     points: [
       "NLP-driven chatbot powered by the Gemini API for real-time, personalized financial guidance.",
       "LSTM and ARIMA time-series models forecast future expenses directly on the dashboard for proactive planning.",

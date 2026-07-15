@@ -1,3 +1,4 @@
+import { FiExternalLink, FiGithub } from "react-icons/fi";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import SpotlightCard from "./SpotlightCard";
@@ -12,9 +13,35 @@ export default function Projects() {
         {projects.map((project, i) => (
           <Reveal key={project.name} delay={i * 0.08} className="h-full">
             <SpotlightCard className="flex h-full flex-col p-6">
-              <h3 className="text-lg font-semibold transition-colors group-hover:text-accent">
-                {project.name}
-              </h3>
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="text-lg font-semibold transition-colors group-hover:text-accent">
+                  {project.name}
+                </h3>
+                <div className="flex shrink-0 items-center gap-2">
+                  {project.repo && (
+                    <a
+                      href={project.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${project.name} source code on GitHub`}
+                      className="relative z-10 text-muted transition-colors hover:text-accent"
+                    >
+                      <FiGithub size={17} />
+                    </a>
+                  )}
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${project.name} live demo`}
+                      className="relative z-10 text-muted transition-colors hover:text-accent"
+                    >
+                      <FiExternalLink size={17} />
+                    </a>
+                  )}
+                </div>
+              </div>
               <p className="mt-2 text-sm text-muted">{project.description}</p>
 
               <ul className="mt-4 flex-1 space-y-2">
