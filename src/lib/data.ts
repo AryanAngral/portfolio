@@ -87,9 +87,9 @@ export const experience: ExperienceItem[] = [
   {
     role: "Software Intern",
     org: "Straatix Partners Labs Pvt. Ltd.",
-    period: "Jan 2026 – Present",
+    period: "Jan 2026 – Jul 2026",
     points: [
-      "Built and maintain dual frontend portals for HR professionals and candidates in React/Next.js, including interactive interview-scheduling tiles and accessible navigation.",
+      "Built and maintained dual frontend portals for HR professionals and candidates in React/Next.js, including interactive interview-scheduling tiles and accessible navigation.",
       "Architected the backend on Supabase — SSO, secure email verification, and serverless TypeScript edge functions powering automated referral email pipelines.",
       "Led the migration of production infrastructure to Google Cloud Platform, standing up Cloud Run and Vertex AI to deploy and scale ML pipelines.",
       "Wrote Terraform to provision RBAC, custom IAM roles, security policies, and real-time observability alerts on GCP.",
@@ -99,9 +99,9 @@ export const experience: ExperienceItem[] = [
   {
     role: "Vice Chairperson",
     org: "CSI Student Chapter — MIET",
-    period: "2025 – Present",
+    period: "2025 – Jul 2026",
     points: [
-      "Organize technical workshops, hackathons, and Agile coding competitions for 200+ student participants, raising hands-on software development skills across campus.",
+      "Organized technical workshops, hackathons, and Agile coding competitions for 200+ student participants, raising hands-on software development skills across campus.",
     ],
   },
   {
