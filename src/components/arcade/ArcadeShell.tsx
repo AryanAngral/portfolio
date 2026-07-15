@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import type { ComponentType } from "react";
+import { unlock } from "@/lib/achievements";
 
 type GameMeta = {
   id: string;
@@ -32,6 +33,14 @@ export const GAMES: GameMeta[] = [
   { id: "beats", name: "Beats", icon: "🎹", mode: "solo", controls: "click cells" },
 ];
 
+const SECRET_GAME: GameMeta = {
+  id: "orbit",
+  name: "Orbit",
+  icon: "🛸",
+  mode: "solo",
+  controls: "mouse or ←/→ · KONAMI unlock",
+};
+
 const COMPONENTS: Record<string, ComponentType> = {
   snake: dynamic(() => import("./games/Snake"), { ssr: false }),
   pong: dynamic(() => import("./games/Pong"), { ssr: false }),
@@ -50,11 +59,30 @@ const COMPONENTS: Record<string, ComponentType> = {
   hangman: dynamic(() => import("./games/Hangman"), { ssr: false }),
   typing: dynamic(() => import("./games/TypingTest"), { ssr: false }),
   beats: dynamic(() => import("./games/Beats"), { ssr: false }),
+  orbit: dynamic(() => import("./games/Orbit"), { ssr: false }),
 };
 
 export default function ArcadeShell() {
   const [selected, setSelected] = useState<GameMeta>(GAMES[0]);
+  const [games, setGames] = useState<GameMeta[]>(GAMES);
   const Game = COMPONENTS[selected.id];
+
+  useEffect(() => {
+    try {
+      if (localStorage.getItem("arcade-secret") === "1") {
+        // one-shot: reveal the Konami-unlocked game
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setGames([...GAMES, SECRET_GAME]);
+      }
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
+  function pick(game: GameMeta) {
+    setSelected(game);
+    unlock("gamer");
+  }
 
   return (
     <div>
@@ -64,14 +92,14 @@ export default function ArcadeShell() {
         aria-label="Game picker"
         className="flex gap-2 overflow-x-auto rounded-2xl border border-border bg-surface p-2"
       >
-        {GAMES.map((game) => {
+        {games.map((game) => {
           const active = game.id === selected.id;
           return (
             <button
               key={game.id}
               role="tab"
               aria-selected={active}
-              onClick={() => setSelected(game)}
+              onClick={() => pick(game)}
               className={`flex shrink-0 flex-col items-center gap-1 rounded-xl px-3.5 py-2.5 transition-colors cursor-pointer ${
                 active ? "bg-accent/15 text-accent" : "text-muted hover:bg-surface-2 hover:text-foreground"
               }`}

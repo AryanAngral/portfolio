@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FiCheckCircle, FiCircle } from "react-icons/fi";
+import { unlock } from "@/lib/achievements";
 
 const CHALLENGES = [
   {
@@ -77,6 +78,7 @@ export default function CtfBoard() {
     }
     const next = [...found, hash];
     setFound(next);
+    unlock("hacker");
     try {
       localStorage.setItem(STORE_KEY, JSON.stringify(next));
     } catch {
