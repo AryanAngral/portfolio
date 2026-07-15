@@ -169,6 +169,52 @@ export const projects: Project[] = [
   },
 ];
 
+export type CourseworkRepo = {
+  name: string;
+  description: string;
+  tech: string;
+  repo: string;
+};
+
+export const courseworkRepos: CourseworkRepo[] = [
+  {
+    name: "CPP-DSA",
+    description: "Day-wise C++ data structures & algorithms practice covering the core DSA curriculum.",
+    tech: "C++",
+    repo: "https://github.com/AryanAngral/CPP-DSA",
+  },
+  {
+    name: "AI with Computer Vision",
+    description: "University lab notebooks combining machine learning with computer vision to analyze visual data.",
+    tech: "Python / Jupyter",
+    repo: "https://github.com/AryanAngral/COM-611-AI-with-Computer-Vision",
+  },
+  {
+    name: "MIET Internship 2024",
+    description: "Summer 2024 internship codebase — C++ builds including a train-management system.",
+    tech: "C++",
+    repo: "https://github.com/AryanAngral/INTERNSHIP-JULY-2024-MIET",
+  },
+  {
+    name: "Data Structures in C",
+    description: "Classic data structures implemented from scratch in C — arrays, stacks, search and traversal.",
+    tech: "C",
+    repo: "https://github.com/AryanAngral/DATA-STRUCTURE-USING-C",
+  },
+  {
+    name: "Inventory Management System",
+    description: "Console-based inventory manager written in C++.",
+    tech: "C++",
+    repo: "https://github.com/AryanAngral/Inventory-Management-System",
+  },
+  {
+    name: "Phone Book Management System",
+    description: "Console phone book with add, search and delete operations in C++.",
+    tech: "C++",
+    repo: "https://github.com/AryanAngral/Phone-book-management-system",
+  },
+];
+
 export type Certification = {
   title: string;
   issuer: string;
