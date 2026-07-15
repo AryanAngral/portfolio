@@ -4,7 +4,6 @@ export const profile = {
   tagline: "Cloud infrastructure, full-stack apps, and applied AI.",
   location: "Jammu, India",
   email: "aryan.angral.dev@gmail.com",
-  phone: "[removed]",
   github: "https://github.com/AryanAngral",
   linkedin: "https://www.linkedin.com/in/aryan-angral-44a953167",
   resumeUrl: "/Aryan_Angral_Resume.pdf",

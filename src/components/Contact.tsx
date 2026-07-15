@@ -27,15 +27,31 @@ export default function Contact() {
       return;
     }
 
+    // Honeypot: real users never see or fill this field; bots do.
+    const honeypot = formRef.current.elements.namedItem("website") as HTMLInputElement | null;
+    if (honeypot?.value) {
+      setStatus("success");
+      formRef.current.reset();
+      return;
+    }
+
     setStatus("sending");
     try {
       await emailjs.sendForm(serviceId!, templateId!, formRef.current, {
         publicKey: publicKey!,
+        blockHeadless: true,
+        limitRate: { id: "portfolio-contact", throttle: 10_000 },
       });
       setStatus("success");
       formRef.current.reset();
     } catch (err) {
-      console.error(err);
+      const info =
+        err instanceof Error
+          ? { message: err.message }
+          : typeof err === "string"
+            ? { message: err }
+            : { status: (err as { status?: number }).status, text: (err as { text?: string }).text };
+      console.error("EmailJS send failed:", info);
       setStatus("error");
     }
   }
@@ -83,6 +99,12 @@ export default function Contact() {
             onSubmit={handleSubmit}
             className="flex flex-col gap-4 rounded-2xl border border-border bg-surface p-6"
           >
+            <div aria-hidden="true" className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden">
+              <label>
+                Leave this field empty
+                <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+              </label>
+            </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <input
                 type="text"
