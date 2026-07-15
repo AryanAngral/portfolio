@@ -79,6 +79,30 @@ export const skillGroups: SkillGroup[] = [
   },
 ];
 
+export const skillsRadar: { axis: string; value: number }[] = [
+  { axis: "Cloud", value: 88 },
+  { axis: "DevOps", value: 84 },
+  { axis: "Backend", value: 82 },
+  { axis: "Frontend", value: 86 },
+  { axis: "Security", value: 80 },
+  { axis: "AI / ML", value: 74 },
+];
+
+export type PipelineStage = {
+  label: string;
+  detail: string;
+};
+
+export const pipeline: PipelineStage[] = [
+  { label: "git push", detail: "commit lands on main" },
+  { label: "GitHub Actions", detail: "workflow triggered" },
+  { label: "Workload Identity Federation", detail: "keyless auth to GCP — no long-lived secrets" },
+  { label: "terraform plan & apply", detail: "infra reconciled as code" },
+  { label: "build & test", detail: "container built, suite green" },
+  { label: "deploy → Cloud Run", detail: "rolled out, scaled to demand" },
+  { label: "healthcheck ✓", detail: "live, observability alerts armed" },
+];
+
 export type ExperienceItem = {
   role: string;
   org: string;

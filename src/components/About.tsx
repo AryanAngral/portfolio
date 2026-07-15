@@ -1,5 +1,6 @@
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
+import SkillsRadar from "./SkillsRadar";
 import { education, profile, skillGroups } from "@/lib/data";
 
 const stats = [
@@ -67,6 +68,10 @@ export default function About() {
           </div>
         </Reveal>
       </div>
+
+      <Reveal delay={0.15} className="mt-12">
+        <SkillsRadar />
+      </Reveal>
     </section>
   );
 }

@@ -7,7 +7,7 @@ import { courseworkRepos, profile, projects } from "@/lib/data";
 export default function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-5xl px-6 py-24">
-      <SectionHeading index="04" eyebrow="Projects" title="Things I&apos;ve built" />
+      <SectionHeading index="05" eyebrow="Projects" title="Things I&apos;ve built" />
 
       <div className="grid gap-6 sm:grid-cols-2">
         {projects.map((project, i) => (

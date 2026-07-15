@@ -3,6 +3,14 @@
   "linesOfCode": 24000,
   "commits": 185,
   "languages": ["C++", "TypeScript", "JavaScript", "Python", "HTML", "Jupyter"],
+  "langBreakdown": [
+    { "name": "C++", "count": 6 },
+    { "name": "HTML", "count": 3 },
+    { "name": "TypeScript", "count": 1 },
+    { "name": "JavaScript", "count": 1 },
+    { "name": "Python", "count": 1 },
+    { "name": "Jupyter", "count": 1 }
+  ],
   "topLanguage": "C++",
   "memberSince": 2022,
   "updated": "2026-07-16"

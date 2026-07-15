@@ -59,7 +59,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="mx-auto max-w-5xl px-6 py-24">
-      <SectionHeading index="07" eyebrow="Contact" title="Let&apos;s build something" />
+      <SectionHeading index="08" eyebrow="Contact" title="Let&apos;s build something" />
 
       <div className="grid gap-12 md:grid-cols-2">
         <Reveal>

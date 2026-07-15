@@ -2,6 +2,7 @@ import { FiGithub } from "react-icons/fi";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import CommitHeatmap from "./CommitHeatmap";
+import LanguageDonut from "./LanguageDonut";
 import { profile } from "@/lib/data";
 import github from "@/lib/github.json";
 
@@ -23,7 +24,7 @@ const TILES = [
 export default function GithubStats() {
   return (
     <section id="github" className="mx-auto max-w-5xl px-6 py-24">
-      <SectionHeading index="05" eyebrow="GitHub" title="Code, by the numbers" />
+      <SectionHeading index="06" eyebrow="GitHub" title="Code, by the numbers" />
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
         {TILES.map((tile, i) => (
@@ -37,9 +38,14 @@ export default function GithubStats() {
         ))}
       </div>
 
-      <Reveal delay={0.1} className="mt-6">
-        <CommitHeatmap />
-      </Reveal>
+      <div className="mt-6 grid gap-4 md:grid-cols-2">
+        <Reveal delay={0.08}>
+          <LanguageDonut />
+        </Reveal>
+        <Reveal delay={0.12}>
+          <CommitHeatmap />
+        </Reveal>
+      </div>
 
       <Reveal delay={0.15} className="mt-6">
         <a
