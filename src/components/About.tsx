@@ -2,10 +2,31 @@ import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import { education, profile, skillGroups } from "@/lib/data";
 
+const stats = [
+  { value: "8.8", label: "CGPA in Computer Science" },
+  { value: "200+", label: "Students reached via workshops" },
+  { value: "30%", label: "Latency cut in optimized pipelines" },
+  { value: "4", label: "Certifications & distinctions" },
+];
+
 export default function About() {
   return (
     <section id="about" className="mx-auto max-w-5xl px-6 py-24">
       <SectionHeading eyebrow="About" title="Who I am" />
+
+      <Reveal className="mb-14">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-2xl border border-border bg-surface p-5 text-center"
+            >
+              <p className="text-gradient text-3xl font-bold">{stat.value}</p>
+              <p className="mt-1 text-xs text-muted">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </Reveal>
 
       <div className="grid gap-12 md:grid-cols-2">
         <Reveal>

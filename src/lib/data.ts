@@ -1,3 +1,5 @@
+export const siteUrl = "https://aryanangral.vercel.app";
+
 export const profile = {
   name: "Aryan Angral",
   role: "Software Engineer",

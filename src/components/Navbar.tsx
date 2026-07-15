@@ -15,6 +15,7 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     function onScroll() {
@@ -23,6 +24,22 @@ export default function Navbar() {
     onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "-25% 0px -65% 0px" },
+    );
+    for (const link of links) {
+      const el = document.getElementById(link.href.slice(1));
+      if (el) observer.observe(el);
+    }
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -41,7 +58,11 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted transition-colors hover:text-foreground"
+              className={`text-sm transition-colors ${
+                active === link.href.slice(1)
+                  ? "text-accent"
+                  : "text-muted hover:text-foreground"
+              }`}
             >
               {link.label}
             </a>
