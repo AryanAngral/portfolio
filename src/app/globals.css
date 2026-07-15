@@ -10,6 +10,7 @@
   --border: #e5e5ec;
   --accent: #6d28d9;
   --accent-2: #06b6d4;
+  --accent-contrast: #ffffff;
   --muted: #57575f;
 }
 
@@ -21,6 +22,7 @@
   --border: #23232b;
   --accent: #a78bfa;
   --accent-2: #22d3ee;
+  --accent-contrast: #0a0a0f;
   --muted: #9a9aa5;
 }
 
@@ -32,6 +34,7 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
+  --color-accent-contrast: var(--accent-contrast);
   --color-muted: var(--muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -58,6 +61,32 @@ section[id] {
   }
 }
 
+@media print {
+  :root {
+    --background: #ffffff;
+    --foreground: #000000;
+    --surface: #ffffff;
+    --surface-2: #f2f2f2;
+    --border: #d0d0d0;
+    --accent: #4c1d95;
+    --accent-2: #155e75;
+    --muted: #333333;
+  }
+  .no-print,
+  #custom-cursor,
+  header,
+  footer {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
 #custom-cursor {
   display: none;
 }
@@ -78,7 +107,7 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: white;
+  color: var(--accent-contrast);
 }
 
 ::-webkit-scrollbar {

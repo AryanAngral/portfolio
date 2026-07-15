@@ -169,6 +169,52 @@ export const projects: Project[] = [
   },
 ];
 
+export type Milestone = {
+  period: string;
+  title: string;
+  detail: string;
+};
+
+export const journey: Milestone[] = [
+  {
+    period: "2022",
+    title: "Started B.Tech in Computer Science",
+    detail: "Model Institute of Engineering and Technology, Jammu.",
+  },
+  {
+    period: "2023",
+    title: "Vice Chairperson & Research Lead, ACM MIET",
+    detail: "Led AI, cryptography, and architecture seminars for 50+ students.",
+  },
+  {
+    period: "2024",
+    title: "Research internship & security certifications",
+    detail:
+      "Cut processing latency 30% at MIET; earned NYU and Palo Alto Networks cybersecurity certificates, NPTEL Cyber Security, and GUVI Python.",
+  },
+  {
+    period: "2024 – 2025",
+    title: "Google Cybersecurity certificate courses",
+    detail: "Completed six verified courses, from Foundations to Detection and Response.",
+  },
+  {
+    period: "2025",
+    title: "Vice Chairperson, CSI Student Chapter",
+    detail: "Ran workshops, hackathons, and coding competitions for 200+ participants.",
+  },
+  {
+    period: "Jan 2026",
+    title: "Software Intern, Straatix Partners Labs",
+    detail:
+      "Built dual HR/candidate portals; led the GCP migration with Terraform and keyless CI/CD.",
+  },
+  {
+    period: "Jul 2026",
+    title: "Graduated — Director's Merit Gold Medalist",
+    detail: "B.Tech CSE with 8.8 CGPA; open to full-time software roles.",
+  },
+];
+
 export type CourseworkRepo = {
   name: string;
   description: string;

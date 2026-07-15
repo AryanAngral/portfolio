@@ -4,6 +4,9 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import ThemeScript from "@/components/ThemeScript";
 import MotionProvider from "@/components/MotionProvider";
+import CommandPalette from "@/components/CommandPalette";
+import CustomCursor from "@/components/CustomCursor";
+import Terminal from "@/components/Terminal";
 import { education, profile, siteUrl } from "@/lib/data";
 
 const geistSans = Geist({
@@ -86,12 +89,15 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:text-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:text-accent-contrast"
         >
           Skip to content
         </a>
         <MotionProvider>{children}</MotionProvider>
-        <Analytics />
+        <CommandPalette />
+        <Terminal />
+        <CustomCursor />
+        {process.env.VERCEL === "1" && <Analytics />}
       </body>
     </html>
   );

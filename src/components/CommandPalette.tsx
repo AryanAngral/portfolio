@@ -32,17 +32,36 @@ export default function CommandPalette() {
 
   const commands = useMemo<Command[]>(() => {
     const go = (id: string) => () => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+      else window.location.href = `/#${id}`;
     };
     const openUrl = (url: string) => () => {
       window.open(url, url.startsWith("mailto:") ? "_self" : "_blank", "noreferrer");
     };
     return [
       { id: "about", label: "Go to About", hint: "Section", icon: <FiUser size={15} />, run: go("about") },
+      { id: "journey", label: "Go to Journey", hint: "Section", icon: <FiUser size={15} />, run: go("journey") },
       { id: "experience", label: "Go to Experience", hint: "Section", icon: <FiBriefcase size={15} />, run: go("experience") },
       { id: "projects", label: "Go to Projects", hint: "Section", icon: <FiFolder size={15} />, run: go("projects") },
       { id: "certifications", label: "Go to Certifications", hint: "Section", icon: <FiAward size={15} />, run: go("certifications") },
       { id: "contact", label: "Go to Contact", hint: "Section", icon: <FiMail size={15} />, run: go("contact") },
+      {
+        id: "terminal",
+        label: "Open terminal",
+        hint: "Easter egg",
+        icon: <FiFolder size={15} />,
+        run: () => window.dispatchEvent(new Event("terminal:open")),
+      },
+      {
+        id: "resume-page",
+        label: "View HTML resume",
+        hint: "Page",
+        icon: <FiDownload size={15} />,
+        run: () => {
+          window.location.href = "/resume";
+        },
+      },
       {
         id: "resume",
         label: "Download resume",

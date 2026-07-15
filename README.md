@@ -11,18 +11,21 @@ Personal portfolio built with Next.js 16 (App Router), TypeScript, Tailwind CSS 
 
 **Live at [aryanangral.vercel.app](https://aryanangral.vercel.app)**
 
+**Lighthouse: 100 accessibility · 100 best practices · 100 SEO**
+
 ## Features
 
-- Animated hero with rotating roles and availability badge
-- Command palette (`Ctrl+K`) for keyboard-driven navigation
+- Animated hero with rotating roles and `STATUS: OPEN_TO_WORK` badge
+- Command palette (`Ctrl+K`) and a hidden interactive terminal (`Ctrl+\``)
+- Custom cursor with trailing ring (desktop only, reduced-motion aware)
 - Dark/light theme with no flash-of-wrong-theme
-- Spotlight hover effect on project cards
-- Scrollspy navigation and scroll-reveal animations
+- Journey timeline, spotlight project cards, scrollspy navigation
 - Contact form that emails directly via EmailJS (no backend)
-- Downloadable resume PDF
+- `/resume` — HTML resume rendered from the same data as the site, print-ready
+- Installable PWA with app icons and custom 404 page
 - SEO: sitemap, robots, JSON-LD structured data, Open Graph image generated at build time
-- Hardened security headers (CSP, HSTS, frame-ancestors) and contact-form spam protection
-- Accessible: skip link, reduced-motion support, semantic landmarks
+- Hardened security headers (CSP, HSTS, COOP, frame-ancestors), security.txt, and contact-form spam protection
+- Accessible: skip link, reduced-motion support, WCAG-checked contrast
 
 ## Getting started
 

@@ -58,7 +58,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="mx-auto max-w-5xl px-6 py-24">
-      <SectionHeading index="05" eyebrow="Contact" title="Let&apos;s build something" />
+      <SectionHeading index="06" eyebrow="Contact" title="Let&apos;s build something" />
 
       <div className="grid gap-12 md:grid-cols-2">
         <Reveal>
@@ -138,7 +138,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white shadow-lg shadow-accent/20 transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
+              className="flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-contrast shadow-lg shadow-accent/20 transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
             >
               <FiSend size={15} />
               {status === "sending" ? "Sending…" : "Send message"}
