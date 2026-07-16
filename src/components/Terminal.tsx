@@ -144,9 +144,30 @@ function runCommand(raw: string): { output: string[]; action?: () => void } {
           localStorage.setItem("theme", dark ? "dark" : "light");
         },
       };
+    case "sudo hire me":
+    case "hire":
+    case "hire me":
+      return {
+        output: ["✓ permission granted. opening a hiring email + celebrating…"],
+        action: () => {
+          window.dispatchEvent(new Event("confetti"));
+          const subject = encodeURIComponent("Let's work together");
+          const body = encodeURIComponent(
+            "Hi Aryan,\n\nI came across your portfolio and would love to talk about an opportunity.\n\n",
+          );
+          window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+        },
+      };
     case "sudo":
     case "sudo su":
-      return { output: ["nice try."] };
+      return { output: ["nice try. (psst — try 'sudo hire me')"] };
+    case "now":
+      return {
+        output: ["opening the /now page…"],
+        action: () => {
+          window.location.href = "/now";
+        },
+      };
     case "ls":
       return { output: ["about  journey  experience  projects  certifications  contact  .env"] };
     case "cat .env":

@@ -13,7 +13,12 @@ const csp = [
   "img-src 'self' data:",
   "font-src 'self'",
   `connect-src 'self' https://api.emailjs.com${isDev ? " ws: wss:" : ""}`,
-  "worker-src 'self' blob:",
+  "worker-src 'self'",
+  "manifest-src 'self'",
+  "media-src 'self'",
+  // sandboxed JS-playground iframe (allow-scripts only, opaque origin)
+  "frame-src 'self'",
+  "child-src 'self'",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",

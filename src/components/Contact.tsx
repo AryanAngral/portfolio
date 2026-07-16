@@ -7,6 +7,7 @@ import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import ContactCard from "./ContactCard";
 import OfficeHours from "./OfficeHours";
+import LocationPin from "./LocationPin";
 import { profile } from "@/lib/data";
 
 type Status = "idle" | "sending" | "success" | "error";
@@ -117,6 +118,9 @@ export default function Contact() {
 
           <div className="mt-6">
             <OfficeHours />
+          </div>
+          <div className="mt-4">
+            <LocationPin />
           </div>
         </Reveal>
 

@@ -25,10 +25,44 @@ export default function Beats() {
   const [step, setStep] = useState(-1);
   const [bpm, setBpm] = useState(120);
   const ctxRef = useRef<AudioContext | null>(null);
+  const analyserRef = useRef<AnalyserNode | null>(null);
+  const vizRef = useRef<HTMLCanvasElement>(null);
   const gridRef = useRef(grid);
   useEffect(() => {
     gridRef.current = grid;
   }, [grid]);
+
+  // frequency-bar visualizer, driven by the analyser while playing
+  useEffect(() => {
+    if (!playing) return;
+    const canvas = vizRef.current;
+    const ctx = canvas?.getContext("2d");
+    if (!canvas || !ctx) return;
+    let raf = 0;
+    const draw = () => {
+      raf = requestAnimationFrame(draw);
+      const analyser = analyserRef.current;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (!analyser) return;
+      const bins = analyser.frequencyBinCount;
+      const data = new Uint8Array(bins);
+      analyser.getByteFrequencyData(data);
+      const bars = 48;
+      const step = Math.floor(bins / bars);
+      const bw = canvas.width / bars;
+      const styles = getComputedStyle(document.documentElement);
+      const accent = styles.getPropertyValue("--accent").trim() || "#a78bfa";
+      const accent2 = styles.getPropertyValue("--accent-2").trim() || "#22d3ee";
+      for (let i = 0; i < bars; i++) {
+        const v = data[i * step] / 255;
+        const h = v * canvas.height;
+        ctx.fillStyle = i % 2 ? accent : accent2;
+        ctx.fillRect(i * bw, canvas.height - h, bw - 1, h);
+      }
+    };
+    raf = requestAnimationFrame(draw);
+    return () => cancelAnimationFrame(raf);
+  }, [playing]);
 
   useEffect(() => {
     if (!playing) return;
@@ -46,7 +80,8 @@ export default function Beats() {
           osc.frequency.value = track.freq;
           gain.gain.setValueAtTime(0.08, ctx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + track.dur);
-          osc.connect(gain).connect(ctx.destination);
+          const sink = analyserRef.current ?? ctx.destination;
+          osc.connect(gain).connect(sink);
           osc.start();
           osc.stop(ctx.currentTime + track.dur);
         });
@@ -60,6 +95,10 @@ export default function Beats() {
     if (!playing && !ctxRef.current) {
       try {
         ctxRef.current = new AudioContext();
+        const analyser = ctxRef.current.createAnalyser();
+        analyser.fftSize = 128;
+        analyser.connect(ctxRef.current.destination);
+        analyserRef.current = analyser;
       } catch {
         /* no audio */
       }
@@ -140,6 +179,12 @@ export default function Beats() {
           </div>
         ))}
       </div>
+      <canvas
+        ref={vizRef}
+        width={320}
+        height={48}
+        className="mx-auto mt-3 block w-full max-w-[320px] rounded-lg border border-border bg-[#0a0a12]"
+      />
       <p className="mt-3 text-center font-mono text-xs text-muted">
         click cells to build a loop · pure WebAudio, no samples
       </p>

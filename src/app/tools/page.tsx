@@ -8,6 +8,7 @@ import HeaderScan from "@/components/tools/HeaderScan";
 import RegexTester from "@/components/tools/RegexTester";
 import BaseConverter from "@/components/tools/BaseConverter";
 import UuidGenerator from "@/components/tools/UuidGenerator";
+import JsPlayground from "@/components/tools/JsPlayground";
 
 export const metadata: Metadata = {
   title: "Security tools — Aryan Angral",
@@ -46,6 +47,7 @@ export default function ToolsPage() {
         <RegexTester />
         <BaseConverter />
         <UuidGenerator />
+        <JsPlayground />
       </div>
     </main>
   );

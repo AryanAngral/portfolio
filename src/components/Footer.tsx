@@ -13,6 +13,7 @@ export default function Footer() {
           <a href="/tools" className="transition-colors hover:text-accent">🔐 tools</a>
           <a href="/resume" className="transition-colors hover:text-accent">📄 resume</a>
           <a href="/stats" className="transition-colors hover:text-accent">📈 stats</a>
+          <a href="/now" className="transition-colors hover:text-accent">🟢 now</a>
         </nav>
       </div>
       <div className="mx-auto mt-6 flex max-w-5xl flex-col items-center justify-between gap-4 text-sm text-muted sm:flex-row">
