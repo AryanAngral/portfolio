@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FiArrowDown, FiDownload, FiGithub, FiLinkedin, FiMail, FiVolume2 } from "react-icons/fi";
 import Magnetic from "./Magnetic";
+import { useT } from "./T";
 import { profile } from "@/lib/data";
-import { hero as heroI18n, getLang, type Lang } from "@/lib/i18n";
 
 const ROLES = ["Software Engineer", "Cloud & DevOps Builder", "Full-Stack Developer", "AI Tinkerer"];
 
-function ReadBioButton({ text }: { text: string }) {
+function ReadBioButton({ text, readLabel, stopLabel }: { text: string; readLabel: string; stopLabel: string }) {
   const [speaking, setSpeaking] = useState(false);
 
   useEffect(() => () => window.speechSynthesis?.cancel(), []);
@@ -34,21 +34,13 @@ function ReadBioButton({ text }: { text: string }) {
       aria-label={speaking ? "Stop reading bio" : "Read bio aloud"}
       className="flex items-center gap-2 rounded-full border border-border px-4 py-3 text-sm font-medium transition-colors hover:border-accent hover:text-accent cursor-pointer"
     >
-      <FiVolume2 size={15} /> {speaking ? "Stop" : "Read bio"}
+      <FiVolume2 size={15} /> {speaking ? stopLabel : readLabel}
     </button>
   );
 }
 
 export default function Hero() {
-  const [lang, setLang] = useState<Lang>("en");
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setLang(getLang());
-    const onLang = (e: Event) => setLang((e as CustomEvent).detail as Lang);
-    window.addEventListener("langchange", onLang);
-    return () => window.removeEventListener("langchange", onLang);
-  }, []);
-  const t = heroI18n[lang];
+  const t = useT();
   return (
     <section id="top" className="relative flex min-h-screen items-center overflow-hidden px-6">
       <div className="mx-auto grid max-w-5xl gap-10 py-32">
@@ -64,7 +56,7 @@ export default function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
           </span>
-          {t.availability}
+          {t("hero.availability")}
         </motion.a>
 
         <motion.p
@@ -73,7 +65,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.05 }}
           className="-mt-4 font-mono text-sm text-accent"
         >
-          {t.greeting}
+          {t("hero.greeting")}
         </motion.p>
 
         <motion.h1
@@ -100,7 +92,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="-mt-4 max-w-xl text-base text-muted sm:text-lg"
         >
-          {t.summary}
+          {t("hero.summary")}
         </motion.p>
 
         <motion.div
@@ -114,7 +106,7 @@ export default function Hero() {
               href="#contact"
               className="inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-contrast shadow-lg shadow-accent/20"
             >
-              {t.cta}
+              {t("hero.cta")}
             </a>
           </Magnetic>
           <Magnetic>
@@ -123,10 +115,14 @@ export default function Hero() {
               download
               className="flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
             >
-              <FiDownload size={15} /> {t.resume}
+              <FiDownload size={15} /> {t("hero.resume")}
             </a>
           </Magnetic>
-          <ReadBioButton text={t.summary} />
+          <ReadBioButton
+            text={t("hero.summary")}
+            readLabel={t("hero.readbio")}
+            stopLabel={t("hero.stop")}
+          />
 
           <div className="ml-2 flex items-center gap-3">
             <SocialLink href={profile.github} label="GitHub">

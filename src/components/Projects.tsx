@@ -1,5 +1,6 @@
 import { FiGithub } from "react-icons/fi";
 import Reveal from "./Reveal";
+import T from "./T";
 import SectionHeading from "./SectionHeading";
 import ProjectShowcase from "./ProjectShowcase";
 import { courseworkRepos, profile, projects } from "@/lib/data";
@@ -7,20 +8,20 @@ import { courseworkRepos, profile, projects } from "@/lib/data";
 export default function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-5xl px-6 py-24">
-      <SectionHeading index="05" eyebrow="Projects" title="Things I&apos;ve built" />
+      <SectionHeading index="05" eyebrow={<T k="h.proj.eyebrow" />} title={<T k="h.proj.title" />} />
 
       <ProjectShowcase projects={projects} />
 
       <Reveal className="mt-16">
         <div className="flex items-baseline justify-between gap-4">
-          <h3 className="text-xl font-semibold">Coursework & practice</h3>
+          <h3 className="text-xl font-semibold"><T k="proj.coursework" /></h3>
           <a
             href={profile.github}
             target="_blank"
             rel="noreferrer"
             className="text-sm text-muted transition-colors hover:text-accent"
           >
-            All repos →
+            <T k="proj.allrepos" />
           </a>
         </div>
       </Reveal>

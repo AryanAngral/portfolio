@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useT } from "./T";
 import github from "@/lib/github.json";
 
 const COLORS = ["#a78bfa", "#22d3ee", "#f472b6", "#34d399", "#facc15", "#fb923c"];
 
 export default function LanguageDonut() {
+  const t = useT();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const data = github.langBreakdown as { name: string; count: number }[];
   const total = data.reduce((sum, d) => sum + d.count, 0);
@@ -65,7 +67,7 @@ export default function LanguageDonut() {
 
   return (
     <div className="rounded-2xl border border-border bg-surface p-6">
-      <h3 className="mb-4 font-semibold">Languages by repo</h3>
+      <h3 className="mb-4 font-semibold">{t("gh.donut")}</h3>
       <div className="flex items-center gap-6">
         <canvas ref={canvasRef} className="shrink-0" />
         <ul className="space-y-1.5">

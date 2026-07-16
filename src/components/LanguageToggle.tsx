@@ -19,6 +19,7 @@ export default function LanguageToggle() {
     } catch {
       /* ignore */
     }
+    document.documentElement.lang = next;
     window.dispatchEvent(new CustomEvent("langchange", { detail: next }));
   }
 

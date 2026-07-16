@@ -2,11 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { FiCheck, FiLoader, FiPlay } from "react-icons/fi";
+import { useT } from "./T";
 import { pipeline } from "@/lib/data";
 
 type State = "idle" | "running" | "done";
 
 export default function DeploySimulator() {
+  const t = useT();
   const [state, setState] = useState<State>("idle");
   const [active, setActive] = useState(-1);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
@@ -35,10 +37,8 @@ export default function DeploySimulator() {
     <div className="rounded-2xl border border-border bg-surface p-6">
       <div className="mb-5 flex items-center justify-between gap-4">
         <div>
-          <h3 className="font-semibold">Deploy pipeline</h3>
-          <p className="text-xs text-muted">
-            The keyless CI/CD flow I built at Straatix — press play to watch it run.
-          </p>
+          <h3 className="font-semibold">{t("sim.title")}</h3>
+          <p className="text-xs text-muted">{t("sim.desc")}</p>
         </div>
         <button
           onClick={run}
@@ -46,7 +46,7 @@ export default function DeploySimulator() {
           className="flex shrink-0 items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-contrast transition-transform hover:scale-105 disabled:opacity-60 cursor-pointer"
         >
           {state === "running" ? <FiLoader className="animate-spin" size={14} /> : <FiPlay size={14} />}
-          {state === "done" ? "Redeploy" : state === "running" ? "Deploying…" : "Deploy"}
+          {state === "done" ? t("sim.redeploy") : state === "running" ? t("sim.deploying") : t("sim.deploy")}
         </button>
       </div>
 

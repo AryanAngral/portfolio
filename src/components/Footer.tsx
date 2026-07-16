@@ -1,5 +1,6 @@
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import UptimeTicker from "./UptimeTicker";
+import T from "./T";
 import { profile } from "@/lib/data";
 
 export default function Footer() {
@@ -18,7 +19,7 @@ export default function Footer() {
       </div>
       <div className="mx-auto mt-6 flex max-w-5xl flex-col items-center justify-between gap-4 text-sm text-muted sm:flex-row">
         <p>
-          &copy; {new Date().getFullYear()} {profile.name}. All rights reserved.
+          &copy; {new Date().getFullYear()} {profile.name}. <T k="footer.rights" />
         </p>
         <div className="flex items-center gap-4">
           <a

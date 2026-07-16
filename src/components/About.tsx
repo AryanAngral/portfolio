@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import T from "./T";
 import SectionHeading from "./SectionHeading";
 import SkillsRadar from "./SkillsRadar";
 import CountUp from "./CountUp";
@@ -14,7 +15,7 @@ const stats = [
 export default function About() {
   return (
     <section id="about" className="mx-auto max-w-5xl px-6 py-24">
-      <SectionHeading index="01" eyebrow="About" title="Who I am" />
+      <SectionHeading index="01" eyebrow={<T k="h.about.eyebrow" />} title={<T k="h.about.title" />} />
 
       <Reveal className="mb-14">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
@@ -26,7 +27,7 @@ export default function About() {
               <p className="text-gradient text-3xl font-bold">
                 <CountUp value={stat.value} />
               </p>
-              <p className="mt-1 text-xs text-muted">{stat.label}</p>
+              <p className="mt-1 text-xs text-muted"><T k={`about.stat.${stats.indexOf(stat)}`} fallback={stat.label} /></p>
             </div>
           ))}
         </div>
@@ -34,17 +35,17 @@ export default function About() {
 
       <div className="grid gap-12 md:grid-cols-2">
         <Reveal>
-          <p className="text-muted leading-relaxed">{profile.summary}</p>
+          <p className="text-muted leading-relaxed"><T k="hero.summary" fallback={profile.summary} /></p>
 
           <div className="mt-8 rounded-2xl border border-border bg-surface p-6">
-            <p className="font-mono text-xs uppercase tracking-wide text-muted">Education</p>
+            <p className="font-mono text-xs uppercase tracking-wide text-muted"><T k="about.edu" /></p>
             <p className="mt-2 font-semibold">{education.degree}</p>
             <p className="text-sm text-muted">
               {education.school}, {education.location}
             </p>
             <div className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm text-muted">
               <span>CGPA: {education.cgpa}</span>
-              <span>{education.graduation}</span>
+              <span><T k="about.grad" fallback={education.graduation} /></span>
             </div>
           </div>
         </Reveal>
@@ -54,7 +55,7 @@ export default function About() {
             {skillGroups.map((group) => (
               <div key={group.title}>
                 <p className="mb-3 font-mono text-xs uppercase tracking-wide text-muted">
-                  {group.title}
+                  <T k={`skills.${group.title}`} fallback={group.title} />
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {group.skills.map((skill) => (

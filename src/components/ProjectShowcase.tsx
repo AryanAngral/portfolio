@@ -5,10 +5,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FiExternalLink, FiGithub, FiX } from "react-icons/fi";
 import Reveal from "./Reveal";
 import SpotlightCard from "./SpotlightCard";
+import { useT } from "./T";
 import type { Project } from "@/lib/data";
 
 export default function ProjectShowcase({ projects }: { projects: Project[] }) {
+  const t = useT();
   const [selected, setSelected] = useState<Project | null>(null);
+  const selectedIndex = selected ? projects.indexOf(selected) : -1;
 
   return (
     <>
@@ -48,13 +51,13 @@ export default function ProjectShowcase({ projects }: { projects: Project[] }) {
                   )}
                 </div>
               </div>
-              <p className="mt-2 text-sm text-muted">{project.description}</p>
+              <p className="mt-2 text-sm text-muted">{t(`proj.${i}.desc`, project.description)}</p>
               <div className="mt-4 flex-1" />
               <button
                 onClick={() => setSelected(project)}
                 className="relative z-10 mb-4 w-fit font-mono text-xs text-accent transition-colors hover:underline cursor-pointer"
               >
-                view details →
+                {t("proj.details")}
               </button>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
@@ -101,13 +104,13 @@ export default function ProjectShowcase({ projects }: { projects: Project[] }) {
                   <FiX size={18} />
                 </button>
               </div>
-              <p className="mt-2 text-sm text-muted">{selected.description}</p>
+              <p className="mt-2 text-sm text-muted">{t(`proj.${selectedIndex}.desc`, selected.description)}</p>
 
               <ul className="mt-5 space-y-2.5">
-                {selected.points.map((point) => (
+                {selected.points.map((point, j) => (
                   <li key={point} className="flex gap-2.5 text-sm leading-relaxed text-muted">
                     <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                    {point}
+                    {t(`proj.${selectedIndex}.p${j}`, point)}
                   </li>
                 ))}
               </ul>

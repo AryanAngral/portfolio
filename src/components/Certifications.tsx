@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import T from "./T";
 import SectionHeading from "./SectionHeading";
 import { certifications } from "@/lib/data";
 import { FiAward, FiExternalLink } from "react-icons/fi";
@@ -6,7 +7,7 @@ import { FiAward, FiExternalLink } from "react-icons/fi";
 export default function Certifications() {
   return (
     <section id="certifications" className="mx-auto max-w-5xl px-6 py-24">
-      <SectionHeading index="07" eyebrow="Certifications" title="Credentials &amp; distinctions" />
+      <SectionHeading index="07" eyebrow={<T k="h.certs.eyebrow" />} title={<T k="h.certs.title" />} />
 
       <div className="grid gap-4 sm:grid-cols-2">
         {certifications.map((cert, i) => (

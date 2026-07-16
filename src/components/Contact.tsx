@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { FiGithub, FiLinkedin, FiMail, FiMessageCircle, FiSend } from "react-icons/fi";
 import Reveal from "./Reveal";
+import T, { useT } from "./T";
 import SectionHeading from "./SectionHeading";
 import ContactCard from "./ContactCard";
 import OfficeHours from "./OfficeHours";
@@ -13,6 +14,7 @@ import { profile } from "@/lib/data";
 type Status = "idle" | "sending" | "success" | "error";
 
 export default function Contact() {
+  const t = useT();
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<Status>("idle");
 
@@ -62,14 +64,11 @@ export default function Contact() {
 
   return (
     <section id="contact" className="mx-auto max-w-5xl px-6 py-24">
-      <SectionHeading index="08" eyebrow="Contact" title="Let&apos;s build something" />
+      <SectionHeading index="08" eyebrow={<T k="h.contact.eyebrow" />} title={<T k="h.contact.title" />} />
 
       <div className="grid gap-12 md:grid-cols-2">
         <Reveal>
-          <p className="max-w-sm text-muted leading-relaxed">
-            Have a role, project, or idea in mind? My inbox is open — drop a message and
-            I&apos;ll get back to you directly.
-          </p>
+          <p className="max-w-sm text-muted leading-relaxed">{t("contact.intro")}</p>
 
           <div className="mt-8 flex flex-col gap-3">
             <a
@@ -141,28 +140,28 @@ export default function Contact() {
                 type="text"
                 name="from_name"
                 required
-                placeholder="Your name"
+                placeholder={t("contact.ph.name")}
                 className="rounded-lg border border-border bg-surface-2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent"
               />
               <input
                 type="email"
                 name="reply_to"
                 required
-                placeholder="Your email"
+                placeholder={t("contact.ph.email")}
                 className="rounded-lg border border-border bg-surface-2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent"
               />
             </div>
             <input
               type="text"
               name="subject"
-              placeholder="Subject"
+              placeholder={t("contact.ph.subject")}
               className="rounded-lg border border-border bg-surface-2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent"
             />
             <textarea
               name="message"
               required
               rows={5}
-              placeholder="Your message"
+              placeholder={t("contact.ph.message")}
               className="resize-none rounded-lg border border-border bg-surface-2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent"
             />
 
@@ -172,11 +171,11 @@ export default function Contact() {
               className="flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-contrast shadow-lg shadow-accent/20 transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
             >
               <FiSend size={15} />
-              {status === "sending" ? "Sending…" : "Send message"}
+              {status === "sending" ? t("contact.sending") : t("contact.send")}
             </button>
 
             {status === "success" && (
-              <p className="text-sm text-emerald-500">Thanks — your message is on its way!</p>
+              <p className="text-sm text-emerald-500">{t("contact.success")}</p>
             )}
             {status === "error" && !configured && (
               <p className="text-sm text-amber-500">

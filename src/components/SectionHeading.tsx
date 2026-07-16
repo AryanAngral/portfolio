@@ -5,8 +5,8 @@ export default function SectionHeading({
   title,
   index,
 }: {
-  eyebrow: string;
-  title: string;
+  eyebrow: React.ReactNode;
+  title: React.ReactNode;
   index?: string;
 }) {
   return (

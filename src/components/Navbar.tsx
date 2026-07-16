@@ -7,18 +7,20 @@ import { IoGameControllerOutline } from "react-icons/io5";
 import ThemeToggle from "./ThemeToggle";
 import SkinPicker from "./SkinPicker";
 import LanguageToggle from "./LanguageToggle";
+import { useT } from "./T";
 import { profile } from "@/lib/data";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#journey", label: "Journey" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#github", label: "GitHub" },
-  { href: "#contact", label: "Contact" },
+  { href: "#about", key: "nav.about" },
+  { href: "#journey", key: "nav.journey" },
+  { href: "#experience", key: "nav.experience" },
+  { href: "#projects", key: "nav.projects" },
+  { href: "#github", key: "nav.github" },
+  { href: "#contact", key: "nav.contact" },
 ];
 
 export default function Navbar() {
+  const t = useT();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
@@ -83,7 +85,7 @@ export default function Navbar() {
                   : "text-muted hover:text-foreground after:w-0"
               }`}
             >
-              {link.label}
+              {t(link.key)}
             </a>
           ))}
         </div>
@@ -139,7 +141,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="text-sm text-muted transition-colors hover:text-foreground"
               >
-                {link.label}
+                {t(link.key)}
               </a>
             ))}
           </div>

@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useT } from "./T";
 import { skillsRadar } from "@/lib/data";
 
 export default function SkillsRadar() {
+  const t = useT();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -113,7 +115,7 @@ export default function SkillsRadar() {
 
   return (
     <div className="flex flex-col items-center rounded-2xl border border-border bg-surface p-6">
-      <h3 className="mb-4 self-start font-semibold">Skill profile</h3>
+      <h3 className="mb-4 self-start font-semibold">{t("about.radar")}</h3>
       <canvas ref={canvasRef} />
     </div>
   );

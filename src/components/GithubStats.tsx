@@ -1,5 +1,6 @@
 import { FiGithub } from "react-icons/fi";
 import Reveal from "./Reveal";
+import T from "./T";
 import SectionHeading from "./SectionHeading";
 import CommitHeatmap from "./CommitHeatmap";
 import LanguageDonut from "./LanguageDonut";
@@ -25,7 +26,7 @@ const TILES = [
 export default function GithubStats() {
   return (
     <section id="github" className="mx-auto max-w-5xl px-6 py-24">
-      <SectionHeading index="06" eyebrow="GitHub" title="Code, by the numbers" />
+      <SectionHeading index="06" eyebrow={<T k="h.gh.eyebrow" />} title={<T k="h.gh.title" />} />
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
         {TILES.map((tile, i) => (
@@ -34,7 +35,7 @@ export default function GithubStats() {
               <p className="text-gradient text-3xl font-bold">
                 <CountUp value={tile.value} />
               </p>
-              <p className="mt-2 text-xs font-medium">{tile.label}</p>
+              <p className="mt-2 text-xs font-medium"><T k={`gh.${i}`} fallback={tile.label} /></p>
               <p className="mt-0.5 font-mono text-[10px] text-muted">{tile.hint}</p>
             </div>
           </Reveal>
@@ -57,7 +58,7 @@ export default function GithubStats() {
           rel="noreferrer"
           className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm transition-colors hover:border-accent hover:text-accent"
         >
-          <FiGithub size={16} /> View all repositories
+          <FiGithub size={16} /> <T k="gh.viewall" />
         </a>
       </Reveal>
     </section>

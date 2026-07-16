@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import QRCode from "qrcode";
 import { FiDownload } from "react-icons/fi";
+import { useT } from "./T";
 import { profile, siteUrl } from "@/lib/data";
 
 const VCARD = [
@@ -20,6 +21,7 @@ const VCARD = [
 ].join("\r\n");
 
 export default function ContactCard() {
+  const t = useT();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [open, setOpen] = useState(false);
 
@@ -46,10 +48,8 @@ export default function ContactCard() {
     <div className="mt-8 rounded-2xl border border-border bg-surface p-5">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <p className="text-sm font-semibold">Save my contact</p>
-          <p className="text-xs text-muted">
-            A vCard for your phone, or scan the QR to open this site.
-          </p>
+          <p className="text-sm font-semibold">{t("card.title")}</p>
+          <p className="text-xs text-muted">{t("card.desc")}</p>
         </div>
         <div className="flex items-center gap-3">
           <button
@@ -62,7 +62,7 @@ export default function ContactCard() {
             onClick={() => setOpen((o) => !o)}
             className="rounded-full border border-border px-4 py-2 text-sm transition-colors hover:border-accent hover:text-accent cursor-pointer"
           >
-            {open ? "Hide QR" : "Show QR"}
+            {open ? t("card.hide") : t("card.show")}
           </button>
         </div>
       </div>

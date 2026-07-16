@@ -1,11 +1,12 @@
 import Reveal from "./Reveal";
+import T from "./T";
 import SectionHeading from "./SectionHeading";
 import { experience } from "@/lib/data";
 
 export default function Experience() {
   return (
     <section id="experience" className="mx-auto max-w-5xl px-6 py-24">
-      <SectionHeading index="03" eyebrow="Experience" title="Where I&apos;ve worked" />
+      <SectionHeading index="03" eyebrow={<T k="h.exp.eyebrow" />} title={<T k="h.exp.title" />} />
 
       <div className="relative ml-3 border-l border-border pl-8">
         {experience.map((item, i) => (
@@ -15,10 +16,10 @@ export default function Experience() {
             <h3 className="mt-1 text-lg font-semibold">{item.role}</h3>
             <p className="text-sm text-accent">{item.org}</p>
             <ul className="mt-3 space-y-2">
-              {item.points.map((point) => (
+              {item.points.map((point, j) => (
                 <li key={point} className="flex gap-2 text-sm text-muted leading-relaxed">
                   <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-muted" />
-                  {point}
+                  <span><T k={`exp.${i}.${j}`} fallback={point} /></span>
                 </li>
               ))}
             </ul>

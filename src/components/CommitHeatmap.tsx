@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useT } from "./T";
 import heatmap from "@/lib/heatmap.json";
 
 const CELL = 11;
@@ -8,6 +9,7 @@ const GAP = 3;
 const ROWS = 7;
 
 export default function CommitHeatmap() {
+  const t = useT();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -59,7 +61,7 @@ export default function CommitHeatmap() {
     <div className="rounded-2xl border border-border bg-surface p-5">
       <div className="mb-3 flex items-center justify-between">
         <p className="font-mono text-xs uppercase tracking-wider text-muted">
-          Commit activity · last 52 weeks
+{t("gh.heatmap")}
         </p>
         <p className="font-mono text-xs text-accent-2">{heatmap.total} commits</p>
       </div>
