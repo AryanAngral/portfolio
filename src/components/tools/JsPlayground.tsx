@@ -31,6 +31,8 @@ export default function JsPlayground() {
     setLogs([]);
     const frame = frameRef.current;
     if (!frame) return;
+    // prevent user code from closing the script tag and escaping the sandbox doc
+    const safeCode = code.replace(/<\/(script)/gi, "<\\/$1");
     const srcdoc = `<!doctype html><html><body><script>
       var send = function(line){ parent.postMessage({__playground:true, line: String(line)}, "*"); };
       var fmt = function(a){ try { return typeof a === "object" ? JSON.stringify(a) : String(a); } catch(e){ return String(a); } };
@@ -38,7 +40,7 @@ export default function JsPlayground() {
       console.error = function(){ send("⚠ " + Array.prototype.map.call(arguments, fmt).join(" ")); };
       console.table = function(v){ send(JSON.stringify(v, null, 2)); };
       window.onerror = function(m){ send("⚠ " + m); };
-      try { ${code}\n } catch (e) { send("⚠ " + e); }
+      try { ${safeCode}\n } catch (e) { send("⚠ " + e); }
     <\/script></body></html>`;
     frame.srcdoc = srcdoc;
   }

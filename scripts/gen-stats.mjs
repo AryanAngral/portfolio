@@ -39,7 +39,15 @@ function safe(cmd, fallback) {
   }
 }
 
-const commits = Number(safe("git rev-list --count HEAD", "0")) || 0;
+// Vercel clones shallowly, so rev-list undercounts there. Trust whichever is
+// larger: the fresh count (full clone locally) or the last committed value.
+let commits = Number(safe("git rev-list --count HEAD", "0")) || 0;
+try {
+  const prev = JSON.parse(readFileSync(join(SRC, "lib", "stats.json"), "utf8"));
+  if (Number(prev.commits) > commits) commits = Number(prev.commits);
+} catch {
+  /* first run — no previous stats.json */
+}
 const lastCommit = safe("git log -1 --format=%cd --date=short", "");
 
 const pkg = JSON.parse(readFileSync(join(ROOT, "package.json"), "utf8"));

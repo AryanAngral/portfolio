@@ -110,7 +110,7 @@ export default function SkinPicker() {
         className="no-print flex h-9 items-center gap-1.5 rounded-full border border-border bg-surface px-3 text-muted transition-colors hover:border-accent hover:text-accent cursor-pointer"
       >
         <FiDroplet size={15} />
-        <span className="text-xs font-medium">Skins</span>
+        <span className="hidden text-xs font-medium sm:inline">Skins</span>
       </button>
 
       <AnimatePresence>

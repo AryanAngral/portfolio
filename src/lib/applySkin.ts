@@ -13,6 +13,14 @@ export function applySkin(skin: Skin) {
     );
     delete root.dataset.skin;
     root.dataset.fx = "orbs";
+    // restore the user's stored light/dark preference
+    try {
+      const stored = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      root.classList.toggle("dark", stored ? stored === "dark" : prefersDark);
+    } catch {
+      /* keep current */
+    }
   } else {
     const v = p.vars;
     root.style.setProperty("--background", v.bg);

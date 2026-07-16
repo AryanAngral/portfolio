@@ -71,7 +71,11 @@ export default function Tour() {
   if (step < 0 || !rect) return null;
   const s = STEPS[step];
   const pad = 8;
-  const tooltipTop = rect.top + rect.height + 14;
+  // place below the target, or flip above when it sits in the lower half
+  const TOOLTIP_H = 150;
+  const below = rect.top + rect.height + 14;
+  const tooltipTop =
+    below + TOOLTIP_H > window.innerHeight ? Math.max(12, rect.top - TOOLTIP_H - 14) : below;
   const tooltipLeft = Math.min(Math.max(12, rect.left + rect.width / 2 - 130), window.innerWidth - 272);
 
   return (
