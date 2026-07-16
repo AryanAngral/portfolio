@@ -13,6 +13,7 @@ export const ACHIEVEMENTS: Achievement[] = [
   { id: "hacker", name: "Hacker", icon: "🚩", desc: "Captured a CTF flag." },
   { id: "neo", name: "Neo", icon: "🟢", desc: "Entered the matrix." },
   { id: "wanderer", name: "Wanderer", icon: "🧭", desc: "Explored 4+ pages of the site." },
+  { id: "stylist", name: "Stylist", icon: "🎨", desc: "Tried a different skin." },
   { id: "konami", name: "↑↑↓↓", icon: "🎮", desc: "Entered the Konami code." },
   { id: "completionist", name: "Completionist", icon: "🏆", desc: "Unlocked every other badge." },
 ];

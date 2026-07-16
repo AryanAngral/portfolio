@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { IoGameControllerOutline } from "react-icons/io5";
 import ThemeToggle from "./ThemeToggle";
-import ThemeLab from "./ThemeLab";
+import SkinPicker from "./SkinPicker";
 import { profile } from "@/lib/data";
 
 const links = [
@@ -88,7 +88,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <ThemeLab />
+          <SkinPicker />
           <Link
             href="/arcade"
             aria-label="Open the arcade"

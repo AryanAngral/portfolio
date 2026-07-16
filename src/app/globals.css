@@ -102,7 +102,7 @@ section[id] {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-active, var(--font-sans)), Arial, Helvetica, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -208,4 +208,93 @@ body {
   .fx-blob {
     animation: none;
   }
+}
+
+/* ============ SKIN BACKGROUND FX (keyed by data-fx on <html>) ============ */
+.fx-grid-strong {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--foreground) 10%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--foreground) 10%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 130% 90% at 50% 0%, black 30%, transparent 85%);
+}
+.fx-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--accent) 6%, transparent) 0 2px,
+    transparent 2px 4px
+  );
+}
+.fx-sunset {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 80% at 50% 120%, color-mix(in srgb, var(--accent) 45%, transparent), transparent 60%),
+    linear-gradient(to bottom, transparent 40%, color-mix(in srgb, var(--accent-2) 18%, transparent));
+}
+.fx-sunset::after {
+  content: "";
+  position: absolute;
+  inset: 55% 0 0 0;
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--accent-2) 40%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--accent-2) 40%, transparent) 1px, transparent 1px);
+  background-size: 44px 44px;
+  transform: perspective(300px) rotateX(58deg);
+  transform-origin: top;
+  mask-image: linear-gradient(to bottom, black, transparent 75%);
+}
+.fx-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(color-mix(in srgb, var(--foreground) 12%, transparent) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 120% 80% at 50% 0%, black 30%, transparent 80%);
+}
+.fx-mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(40% 40% at 20% 20%, color-mix(in srgb, var(--accent) 30%, transparent), transparent),
+    radial-gradient(40% 40% at 80% 30%, color-mix(in srgb, var(--accent-2) 26%, transparent), transparent),
+    radial-gradient(50% 50% at 60% 90%, color-mix(in srgb, var(--accent) 20%, transparent), transparent);
+  filter: saturate(1.1);
+}
+
+/* ============ SPECIAL SKIN TREATMENTS ============ */
+/* Glassmorphism: translucent, blurred surfaces */
+[data-skin="glass"] .bg-surface,
+[data-skin="glass"] .bg-surface-2 {
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+}
+
+/* Brutalist: no radius, thick hard borders, no soft shadows */
+[data-skin="brutalist"] * {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+[data-skin="brutalist"] .border,
+[data-skin="brutalist"] [class*="border-border"] {
+  border-width: 2px;
+}
+
+/* Neumorphism: soft extruded surfaces */
+[data-skin="neu"] .bg-surface {
+  box-shadow: 6px 6px 14px #c2c8d0, -6px -6px 14px #ffffff;
+  border-color: transparent !important;
+}
+[data-skin="neu"] .bg-surface-2 {
+  box-shadow: inset 3px 3px 7px #c2c8d0, inset -3px -3px 7px #ffffff;
+}
+
+/* Apple / Android / Fluent: gentle depth on cards */
+[data-skin="apple"] .bg-surface,
+[data-skin="android"] .bg-surface,
+[data-skin="fluent"] .bg-surface {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.05);
 }
