@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FiArrowLeft } from "react-icons/fi";
+import CountUp from "@/components/CountUp";
 import stats from "@/lib/stats.json";
 
 export const metadata: Metadata = {
@@ -45,7 +46,9 @@ export default function StatsPage() {
       <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {TILES.map((tile) => (
           <div key={tile.label} className="rounded-2xl border border-border bg-surface p-5">
-            <p className="text-gradient text-3xl font-bold">{tile.value}</p>
+            <p className="text-gradient text-3xl font-bold">
+              <CountUp value={tile.value} />
+            </p>
             <p className="mt-2 text-xs font-medium">{tile.label}</p>
             <p className="mt-0.5 font-mono text-[10px] text-muted">{tile.hint}</p>
           </div>

@@ -16,15 +16,28 @@ export default function SpotlightCard({
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
-    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+    el.style.setProperty("--mx", `${mx}px`);
+    el.style.setProperty("--my", `${my}px`);
+    // subtle 3D tilt toward the cursor
+    const rx = ((my / rect.height - 0.5) * -6).toFixed(2);
+    const ry = ((mx / rect.width - 0.5) * 6).toFixed(2);
+    el.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+  }
+
+  function onLeave() {
+    const el = ref.current;
+    if (el) el.style.transform = "";
   }
 
   return (
     <div
       ref={ref}
       onMouseMove={onMouseMove}
-      className={`group relative rounded-2xl border border-border bg-surface transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-xl hover:shadow-accent/10 ${className}`}
+      onMouseLeave={onLeave}
+      style={{ transformStyle: "preserve-3d" }}
+      className={`group relative rounded-2xl border border-border bg-surface transition-[transform,border-color,box-shadow] duration-200 hover:border-accent hover:shadow-xl hover:shadow-accent/10 ${className}`}
     >
       <div
         aria-hidden

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FiArrowDown, FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import Magnetic from "./Magnetic";
 import { profile } from "@/lib/data";
 
 const ROLES = ["Software Engineer", "Cloud & DevOps Builder", "Full-Stack Developer", "AI Tinkerer"];
@@ -67,19 +68,23 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-wrap items-center gap-4"
         >
-          <a
-            href="#contact"
-            className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-contrast shadow-lg shadow-accent/20 transition-transform hover:scale-105"
-          >
-            Get in touch
-          </a>
-          <a
-            href={profile.resumeUrl}
-            download
-            className="flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
-          >
-            <FiDownload size={15} /> Resume
-          </a>
+          <Magnetic>
+            <a
+              href="#contact"
+              className="inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-contrast shadow-lg shadow-accent/20"
+            >
+              Get in touch
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href={profile.resumeUrl}
+              download
+              className="flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+            >
+              <FiDownload size={15} /> Resume
+            </a>
+          </Magnetic>
 
           <div className="ml-2 flex items-center gap-3">
             <SocialLink href={profile.github} label="GitHub">

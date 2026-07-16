@@ -18,6 +18,7 @@ import KonamiListener from "@/components/KonamiListener";
 import CheatSheet from "@/components/CheatSheet";
 import SectionNav from "@/components/SectionNav";
 import Confetti from "@/components/Confetti";
+import Tour from "@/components/Tour";
 import { education, profile, siteUrl } from "@/lib/data";
 
 const geistSans = Geist({
@@ -117,6 +118,7 @@ export default function RootLayout({
         <CheatSheet />
         <SectionNav />
         <Confetti />
+        <Tour />
         <CustomCursor />
         <ServiceWorker />
         {process.env.VERCEL === "1" && <Analytics />}

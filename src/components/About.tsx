@@ -1,6 +1,7 @@
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import SkillsRadar from "./SkillsRadar";
+import CountUp from "./CountUp";
 import { education, profile, skillGroups } from "@/lib/data";
 
 const stats = [
@@ -22,7 +23,9 @@ export default function About() {
               key={stat.label}
               className="rounded-2xl border border-border bg-surface p-5 text-center"
             >
-              <p className="text-gradient text-3xl font-bold">{stat.value}</p>
+              <p className="text-gradient text-3xl font-bold">
+                <CountUp value={stat.value} />
+              </p>
               <p className="mt-1 text-xs text-muted">{stat.label}</p>
             </div>
           ))}

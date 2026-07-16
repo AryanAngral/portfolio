@@ -3,6 +3,7 @@ import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import CommitHeatmap from "./CommitHeatmap";
 import LanguageDonut from "./LanguageDonut";
+import CountUp from "./CountUp";
 import { profile } from "@/lib/data";
 import github from "@/lib/github.json";
 
@@ -30,7 +31,9 @@ export default function GithubStats() {
         {TILES.map((tile, i) => (
           <Reveal key={tile.label} delay={i * 0.06}>
             <div className="h-full rounded-2xl border border-border bg-surface p-5">
-              <p className="text-gradient text-3xl font-bold">{tile.value}</p>
+              <p className="text-gradient text-3xl font-bold">
+                <CountUp value={tile.value} />
+              </p>
               <p className="mt-2 text-xs font-medium">{tile.label}</p>
               <p className="mt-0.5 font-mono text-[10px] text-muted">{tile.hint}</p>
             </div>
