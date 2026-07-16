@@ -38,6 +38,7 @@ function runCommand(raw: string): { output: string[]; action?: () => void } {
           "  email       — copy nothing, just read it",
           "  github      — open GitHub",
           "  linkedin    — open LinkedIn",
+          "  skins       — pick from 19 site themes",
           "  theme       — toggle dark/light",
           "  clear       — clear the screen",
           "  exit        — close the terminal",
@@ -127,6 +128,12 @@ function runCommand(raw: string): { output: string[]; action?: () => void } {
       return {
         output: ["opening LinkedIn…"],
         action: () => window.open(profile.linkedin, "_blank", "noreferrer"),
+      };
+    case "skins":
+    case "skin":
+      return {
+        output: ["opening the skin gallery — 19 themes…"],
+        action: () => window.dispatchEvent(new Event("skins:open")),
       };
     case "theme":
       return {

@@ -39,6 +39,13 @@ export default function SkinPicker() {
   }, []);
   /* eslint-enable react-hooks/set-state-in-effect */
 
+  // allow opening from the command palette / terminal
+  useEffect(() => {
+    const openIt = () => setOpen(true);
+    window.addEventListener("skins:open", openIt);
+    return () => window.removeEventListener("skins:open", openIt);
+  }, []);
+
   // auto-by-time: re-evaluate on an interval while enabled
   useEffect(() => {
     if (!auto) return;
@@ -100,9 +107,10 @@ export default function SkinPicker() {
         onClick={() => setOpen((o) => !o)}
         aria-label="Change skin"
         title="Skins — 19 themes"
-        className="no-print flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface text-muted transition-colors hover:border-accent hover:text-accent cursor-pointer"
+        className="no-print flex h-9 items-center gap-1.5 rounded-full border border-border bg-surface px-3 text-muted transition-colors hover:border-accent hover:text-accent cursor-pointer"
       >
         <FiDroplet size={15} />
+        <span className="text-xs font-medium">Skins</span>
       </button>
 
       <AnimatePresence>

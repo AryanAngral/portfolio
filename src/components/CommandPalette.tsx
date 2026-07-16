@@ -127,6 +127,13 @@ export default function CommandPalette() {
         },
       },
       {
+        id: "skins",
+        label: "Change skin (19 themes)",
+        hint: "Action",
+        icon: <FiMoon size={15} />,
+        run: () => window.dispatchEvent(new Event("skins:open")),
+      },
+      {
         id: "theme",
         label: "Toggle dark / light theme",
         hint: "Action",
