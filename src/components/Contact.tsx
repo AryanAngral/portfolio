@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { FiGithub, FiLinkedin, FiMail, FiSend } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiMail, FiMessageCircle, FiSend } from "react-icons/fi";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import ContactCard from "./ContactCard";
@@ -93,6 +93,26 @@ export default function Contact() {
             >
               <FiLinkedin size={16} /> LinkedIn
             </a>
+            {profile.whatsapp && (
+              <a
+                href={`https://wa.me/${profile.whatsapp}`}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 text-sm text-muted transition-colors hover:text-accent"
+              >
+                <FiMessageCircle size={16} /> WhatsApp
+              </a>
+            )}
+            {profile.telegram && (
+              <a
+                href={`https://t.me/${profile.telegram}`}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 text-sm text-muted transition-colors hover:text-accent"
+              >
+                <FiSend size={16} /> Telegram
+              </a>
+            )}
           </div>
 
           <div className="mt-6">

@@ -8,6 +8,11 @@ export const profile = {
   email: "aryan.angral.dev@gmail.com",
   github: "https://github.com/AryanAngral",
   linkedin: "https://www.linkedin.com/in/aryan-angral-44a953167",
+  // Optional — fill to show quick-chat buttons (kept empty for privacy).
+  // whatsapp: full intl number without symbols, e.g. "919876543210"
+  whatsapp: "",
+  telegram: "", // telegram username without @
+
   resumeUrl: "/Aryan_Angral_Resume.pdf",
   availability: "Open to full-time opportunities",
   summary:

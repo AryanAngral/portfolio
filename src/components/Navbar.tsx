@@ -6,6 +6,7 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import { IoGameControllerOutline } from "react-icons/io5";
 import ThemeToggle from "./ThemeToggle";
 import SkinPicker from "./SkinPicker";
+import LanguageToggle from "./LanguageToggle";
 import { profile } from "@/lib/data";
 
 const links = [
@@ -88,6 +89,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
+          <LanguageToggle />
           <SkinPicker />
           <Link
             href="/arcade"

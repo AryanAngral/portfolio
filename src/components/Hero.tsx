@@ -1,13 +1,54 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FiArrowDown, FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FiArrowDown, FiDownload, FiGithub, FiLinkedin, FiMail, FiVolume2 } from "react-icons/fi";
 import Magnetic from "./Magnetic";
 import { profile } from "@/lib/data";
+import { hero as heroI18n, getLang, type Lang } from "@/lib/i18n";
 
 const ROLES = ["Software Engineer", "Cloud & DevOps Builder", "Full-Stack Developer", "AI Tinkerer"];
 
+function ReadBioButton({ text }: { text: string }) {
+  const [speaking, setSpeaking] = useState(false);
+
+  useEffect(() => () => window.speechSynthesis?.cancel(), []);
+
+  function toggle() {
+    if (!("speechSynthesis" in window)) return;
+    if (speaking) {
+      window.speechSynthesis.cancel();
+      setSpeaking(false);
+      return;
+    }
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 1;
+    u.onend = () => setSpeaking(false);
+    setSpeaking(true);
+    window.speechSynthesis.speak(u);
+  }
+
+  return (
+    <button
+      onClick={toggle}
+      aria-label={speaking ? "Stop reading bio" : "Read bio aloud"}
+      className="flex items-center gap-2 rounded-full border border-border px-4 py-3 text-sm font-medium transition-colors hover:border-accent hover:text-accent cursor-pointer"
+    >
+      <FiVolume2 size={15} /> {speaking ? "Stop" : "Read bio"}
+    </button>
+  );
+}
+
 export default function Hero() {
+  const [lang, setLang] = useState<Lang>("en");
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setLang(getLang());
+    const onLang = (e: Event) => setLang((e as CustomEvent).detail as Lang);
+    window.addEventListener("langchange", onLang);
+    return () => window.removeEventListener("langchange", onLang);
+  }, []);
+  const t = heroI18n[lang];
   return (
     <section id="top" className="relative flex min-h-screen items-center overflow-hidden px-6">
       <div className="mx-auto grid max-w-5xl gap-10 py-32">
@@ -23,7 +64,7 @@ export default function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
           </span>
-          status: open_to_work
+          {t.availability}
         </motion.a>
 
         <motion.p
@@ -32,7 +73,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.05 }}
           className="-mt-4 font-mono text-sm text-accent"
         >
-          Hi, I&apos;m
+          {t.greeting}
         </motion.p>
 
         <motion.h1
@@ -59,7 +100,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="-mt-4 max-w-xl text-base text-muted sm:text-lg"
         >
-          {profile.summary}
+          {t.summary}
         </motion.p>
 
         <motion.div
@@ -73,7 +114,7 @@ export default function Hero() {
               href="#contact"
               className="inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-contrast shadow-lg shadow-accent/20"
             >
-              Get in touch
+              {t.cta}
             </a>
           </Magnetic>
           <Magnetic>
@@ -82,9 +123,10 @@ export default function Hero() {
               download
               className="flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
             >
-              <FiDownload size={15} /> Resume
+              <FiDownload size={15} /> {t.resume}
             </a>
           </Magnetic>
+          <ReadBioButton text={t.summary} />
 
           <div className="ml-2 flex items-center gap-3">
             <SocialLink href={profile.github} label="GitHub">

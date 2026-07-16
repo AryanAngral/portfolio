@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FiArrowLeft, FiDownload } from "react-icons/fi";
 import PrintButton from "@/components/PrintButton";
+import GeneratePdfButton from "@/components/GeneratePdfButton";
 import {
   certifications,
   education,
@@ -27,8 +28,9 @@ export default function ResumePage() {
         >
           <FiArrowLeft size={15} /> Back to portfolio
         </Link>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <PrintButton />
+          <GeneratePdfButton />
           <a
             href={profile.resumeUrl}
             download
